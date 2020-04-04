@@ -1,0 +1,112 @@
+/*
+ * Theme Name: Assist Trust
+ * Author: Matt Layton
+ * Description: Assist Trust theme
+ * Version: 0.0.1
+ */
+
+html {
+  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: #004279;
+  text-decoration: none;
+}
+
+blockquote {
+  quotes: "\201C""\201D""\2018""\2019";
+  font-weight: bold;
+}
+
+blockquote p {
+  display: inline;
+  font-size: 1.25rem;
+  font-style: italic;
+}
+
+blockquote p:before,
+blockquote p:after {
+  color: #d70c8c;
+  font-size: 2em;
+  line-height: 0.1em;
+  vertical-align: -0.4em;
+}
+
+blockquote p:before {
+  content: open-quote;
+  padding-right: 5px;
+}
+
+blockquote p:after {
+  content: close-quote;
+  padding-left: 2px;
+}
+
+blockquote footer {
+  margin-top: 1em;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden !important;
+}
+
+.button {
+  all: unset; /* remove browser <button> styles */
+  display: inline-block;
+  padding: 10px 15px;
+  margin-top: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button__primary {
+  color: #fff;
+  background-color: #d70c8c;
+}
+
+/* Todo:
+.button__primary:hover,
+.button__primary:focus { ... } */
+
+.sidebar {
+  padding: 40px 0;
+  background: #fff;
+}
+
+.header {
+  color: #fff;
+  padding: 20px 0;
+  background-color: #004279;
+}
+
+.nav {
+  background-color: #fff;
+}
+
+.nav--items {
+  color: #004279;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav--items a {
+  display: block;
+  padding: 5px;
+}
+
+.link--email {
+  color: inherit;
+}
+
+.carousel {
+  height: 360px;
+  background: #ddd;
+}
