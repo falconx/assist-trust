@@ -41,3 +41,10 @@ function at_acf_block_render_callback($block) {
     include(get_theme_file_path("/blocks/block-${slug}.php"));
   }
 }
+
+add_action('admin_init', 'at_admin_init');
+
+function at_admin_init() {
+  // hide default content field
+  remove_post_type_support('page', 'editor');
+}
