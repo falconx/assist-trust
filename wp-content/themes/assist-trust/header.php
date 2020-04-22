@@ -20,7 +20,7 @@
 
 <body>
 
-<header class="full-width">
+<header>
   <div class="header pt-sm-4">
     <div class="container-xl">
       <div class="row">
@@ -83,7 +83,7 @@
           </div>
         </div>
 
-        <div class="col-auto col-sm-12 px-sm-0">
+        <div class="col-auto col-sm-12 px-0">
           <button class="d-sm-none button button__primary button--menu-toggle" aria-expanded="false">
             <span class="visually-hidden">Menu</span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink">

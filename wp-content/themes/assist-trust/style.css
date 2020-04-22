@@ -153,7 +153,7 @@ blockquote footer {
   height: 100%;
   min-height: auto;
   padding: .5rem 1rem;
-  margin-right: -0.75rem; /* gutter */
+  margin-right: -0.25rem; /* remaining gutter after deducting .row from .container */
   font-size: .75rem;
 }
 
