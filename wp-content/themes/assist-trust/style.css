@@ -248,9 +248,12 @@ blockquote footer {
   left: 0;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   line-height: 1.25;
   background-color: inherit;
+  font-size: 0.75rem;
+  padding: 0 .5rem;
 }
 
 #menu-main a {
@@ -286,7 +289,7 @@ blockquote footer {
 
 #menu-main a,
 #menu-main button {
-  padding: 10px 1rem;
+  padding: 10px .5rem;
 }
 
 #menu-main .sub-menu {
@@ -380,7 +383,15 @@ blockquote footer {
 
 @media (min-width: 768px) { /* medium devices (tablets, 768px and up) */
   #menu-main {
-    justify-content: space-between;
+    font-size: 1rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #menu-main a,
+  #menu-main button {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
