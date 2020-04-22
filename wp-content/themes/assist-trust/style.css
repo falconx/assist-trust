@@ -15,7 +15,7 @@ body {
 }
 
 *:focus {
-  outline: 2px dashed currentColor;
+  outline: 1px dashed currentColor;
 }
 
 a {
@@ -30,7 +30,6 @@ blockquote {
 
 blockquote p {
   display: inline;
-  font-size: 1.25rem;
   font-style: italic;
 }
 
@@ -54,6 +53,32 @@ blockquote p:after {
 
 blockquote footer {
   margin-top: 1em;
+}
+
+@media (min-width: 768px) { /* medium devices (tablets, 768px and up) */
+  blockquote p {
+    font-size: 1.25rem;
+  }
+}
+
+.link__animated,
+.link__animated-inner > span,
+#menu-footer a {
+  position: relative;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size .5s;
+}
+
+.link__animated:hover,
+.link__animated:focus,
+.link__animated-inner:hover > span,
+.link__animated-inner:focus > span,
+#menu-footer a:hover,
+#menu-footer a:focus {
+  background-size: 100% 2px;
 }
 
 /* helpers */
@@ -110,11 +135,6 @@ blockquote footer {
 
 /* layout */
 
-.content--main {
-  margin-top: 40px;
-  margin-bottom: 120px;
-}
-
 .sidebar {
   background: #fff;
 }
@@ -124,8 +144,17 @@ blockquote footer {
 }
 
 .header {
+  height: 44px;
   color: #fff;
   background-color: #004279;
+}
+
+.header .button { /* todo */
+  height: 100%;
+  min-height: auto;
+  padding: .5rem 1rem;
+  margin-right: -0.75rem; /* gutter */
+  font-size: .75rem;
 }
 
 .header--contact-info {
@@ -140,14 +169,24 @@ blockquote footer {
   margin-left: 1rem;
 }
 
+.logo {
+  max-height: 44px;
+  max-width: 220px;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  margin-left: -0.75rem; /* gutter */
+}
+
 .slogan {
   display: flex;
   flex-direction: column;
   color: #c1c9df;
   font-weight: bold;
   font-size: 0.75rem;
-  line-height: 1.2;
+  line-height: 1;
   letter-spacing: 1px;
+  width: max-content;
+  margin: 0 auto;
 }
 
 .link--email {
@@ -161,28 +200,29 @@ blockquote footer {
 
 @media (min-width: 576px) { /* small devices (landscape phones, 576px and up) */
   .header {
-    padding-top: 20px;
+    height: auto;
+  }
+
+  .header .button { /* todo */
+    margin-right: 0;
+  }
+
+  .logo {
+    max-height: none;
+    margin-left: auto;
   }
 }
 
-@media (min-width: 992px) { /* large devices (desktops, 992px and up) */
+@media (min-width: 768px) { /* medium devices (tablets, 768px and up) */
   .slogan {
-    display: block;
-    text-align: center;
     font-size: 1.4rem;
-  }
-
-  /* duplicated */
-  .slogan > * + *:before {
-    content: '\00b7';
-    margin-right: 5px;
+    line-height: 1.2;
   }
 }
 
 /* footer */
 
 .page-footer {
-  padding: 40px 0;
   color: #fff;
   background-color: #004279;
 }
@@ -191,12 +231,10 @@ blockquote footer {
   color: #fff;
 }
 
-.page-footer--right {
-  text-align: right;
-}
-
-.page-footer--right > * {
-  margin-top: 20px;
+@media (min-width: 576px) { /* small devices (landscape phones, 576px and up) */
+  .page-footer--right {
+    text-align: right;
+  }
 }
 
 /* main menu */
@@ -209,8 +247,9 @@ blockquote footer {
   position: absolute;
   left: 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   width: 100%;
+  line-height: 1.25;
   background-color: inherit;
 }
 
@@ -218,13 +257,6 @@ blockquote footer {
   display: block;
   transition: color .5s;
   color: #fff;
-}
-
-#menu-main a:hover,
-#menu-main a:focus,
-#menu-main button:hover,
-#menu-main button:focus {
-  outline: none;
 }
 
 #menu-main .menu-item {
@@ -295,12 +327,18 @@ blockquote footer {
 
   #menu-main {
     position: static;
+    flex-direction: row;
     margin: 20px auto 0;
+    text-align: center;
   }
 
   #menu-main a,
   #menu-main button {
     color: #004279;
+  }
+
+  #menu-main button {
+    justify-content: center;
   }
 
   #menu-main a:hover,
@@ -314,12 +352,12 @@ blockquote footer {
     display: none;
   }
 
-  #menu-main .menu-item:hover {
-    background-color: inherit;
-  }
-
   #menu-main .menu-item {
     width: auto;
+  }
+
+  #menu-main .menu-item:hover {
+    background-color: inherit;
   }
 
   #menu-main .sub-menu {
@@ -328,6 +366,7 @@ blockquote footer {
     width: auto; /* IE fallback */
     width: max-content;
     background-color: #fff;
+    text-align: left;
   }
 
   #menu-main .menu-item:hover > .sub-menu {
@@ -347,11 +386,6 @@ blockquote footer {
 
 /* menu toggle button */
 
-.button--menu-toggle {
-  /* align to the top corner of the viewport */
-  margin-right: -10px;
-}
-
 .button--menu-toggle > svg {
   height: 24px;
   width: 24px;
@@ -363,23 +397,19 @@ blockquote footer {
 
 /* social icons */
 
-.social-icons {
-  margin: -10px;
-}
-
 .social-icons--list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
 }
 
 .social-icons a {
   display: flex;
-  margin: 10px;
 }
 
 .social-icons svg {
-  height: 18px;
-  width: 18px;
+  height: 20px;
+  width: 20px;
   transition: all .2s ease-in-out;
 }
 
@@ -390,19 +420,16 @@ blockquote footer {
 
 /* banner */
 
-.banner {
-  padding: 40px 0;
-  font-size: 1.5rem;
-}
-
 .banner:nth-child(even) {
   background-color: #e2e6f0;
 }
 
-.banner--content {
-  max-width: 30ch;
-}
+@media (min-width: 768px) { /* medium devices (tablets, 768px and up) */
+  .banner {
+    font-size: 1.25rem;
+  }
 
-.banner--content > * + * {
-  margin-top: 1rem;
+  .banner--content {
+    max-width: 30ch;
+  }
 }
