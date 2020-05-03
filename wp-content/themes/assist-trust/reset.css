@@ -30,6 +30,7 @@ dd {
 
 :root {
   min-height: 100%;
+  scroll-behavior: smooth;
 }
 
 /* Set core body defaults */

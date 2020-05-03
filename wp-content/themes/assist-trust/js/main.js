@@ -34,3 +34,20 @@ document.addEventListener('DOMContentLoaded', function() {
   mq.addListener(updateMainMenu);
   updateMainMenu(mq);
 });
+
+document.addEventListener('click', function(e) {
+  var header = document.querySelector('.header');
+  var menu = document.getElementById('menu-main');
+  var menuToggle = document.querySelector('.button--menu-toggle');
+
+  // close the main menu when the user clicks outside
+  if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+    var expanded = menu.querySelectorAll('[aria-expanded="true"]');
+
+    expanded.forEach(function(item) {
+      item.setAttribute('aria-expanded', false);
+    });
+
+    menuToggle.setAttribute('aria-expanded', false);
+  }
+});

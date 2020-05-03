@@ -10,7 +10,7 @@ $has_sidebar = $quote['text'] && $quote['author'];
 
 <?php get_header(); ?>
 
-<div class="carousel"></div>
+<?php include get_theme_file_path('/includes/slider.php'); ?>
 
 <main class="container-xl<?php echo ($has_sidebar) ? ' with-sidebar' : '' ?>">
   <div class="row py-5">

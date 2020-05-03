@@ -13,7 +13,8 @@
   <link href="<?php echo get_bloginfo('template_directory'); ?>/bootstrap-utilities.css" rel="stylesheet" />
   <link href="<?php echo get_bloginfo('template_directory'); ?>/style.css" rel="stylesheet" />
 
-  <script src="<?php echo get_bloginfo('template_directory'); ?>/main.js" />
+  <script src="<?php echo get_bloginfo('template_directory'); ?>/js/main.js"></script>
+  <script src="<?php echo get_bloginfo('template_directory'); ?>/js/slider.js"></script>
 
   <?php wp_head(); ?>
 </head>
@@ -24,19 +25,19 @@
   <div class="header pt-sm-4">
     <div class="container-xl">
       <div class="row">
-          <img src="<?php echo get_bloginfo('template_directory'); ?>/images/logo.svg" alt="Assist Trust" class="col-auto align-self-center logo" />
-
-        <div class="col align-self-center">
-          <div class="slogan">
-            <span>Support</span>
-            <span>Progression</span>
-            <span>Success</span>
-          </div>
+        <div class="col-3 align-self-center">
+          <img src="<?php echo get_bloginfo('template_directory'); ?>/images/logo.svg" alt="Assist Trust" class="logo" />
         </div>
 
-        <div class="col-auto align-self-center d-none d-sm-block">
-          <div class="header--contact-info">
-            <div class="social-icons mx-3">
+        <div class="col align-self-center">
+          <div class="slogan-social-container">
+            <div class="slogan">
+              <span>Support</span>
+              <span>Progression</span>
+              <span>Success</span>
+            </div>
+
+            <div class="social-icons d-none d-sm-block">
               <ul class="social-icons--list">
                 <li>
                   <a href="">
@@ -72,7 +73,11 @@
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
 
+        <div class="col-auto align-self-center d-none d-sm-block">
+          <div class="header--contact-info">
             <div>
               <div class="mb-2">
                 Call 01603 230200<br />
@@ -92,60 +97,9 @@
             </svg>
           </button>
 
-          <nav aria-labelledby="main-navigation-heading" hidden>
-            <h2 id="main-navigation-heading" class="visually-hidden">Main Navigation</h2>
-
-            <div class="container-xl">
-              <?php
-
-              $menuItems = wp_get_menu_array('Main');
-
-              ?>
-              <div id="menu-main-container">
-                <ul id="menu-main" class="container-xl">
-                  <?php foreach ($menuItems as $item): ?>
-                    <li class="menu-item">
-                      <?php if (!empty($item['children'])): ?>
-                        <button type="button" aria-expanded="false" class="link__animated-inner">
-                          <span><?php echo $item['title']; ?></span>
-
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <path d="M53 29H35V11a3 3 0 0 0-6 0v18H11a3 3 0 0 0 0 6h18v18a3 3 0 0 0 6 0V35h18a3 3 0 0 0 0-6z" fill="currentColor"></path>
-                          </svg>
-                        </button>
-
-                        <ul class="sub-menu">
-                          <?php foreach($item['children'] as $child): ?>
-                            <li>
-                              <a href="<?php echo $child['url']; ?>" title="<?php echo $child['title']; ?>" class="link__animated-inner">
-                                <span><?php echo $child['title']; ?></span>
-                              </a>
-                            </li>
-                          <?php endforeach; ?>
-                        </ul>
-                      <?php else: ?>
-                        <a href="<?php echo $item['url']; ?>" title="<?php echo $item['title']; ?>" class="link__animated-inner">
-                          <span><?php echo $item['title']; ?></span>
-                        </a>
-                      <?php endif; ?>
-                    </li>
-                  <?php endforeach; ?>
-                </ul>
-              </div>
-            </div>
-          </nav>
+          <?php include get_theme_file_path('/includes/menu-main.php'); ?>
         </div>
       </div>
     </div>
   </div>
-
-  <?php /*
-  <nav class="d-none d-sm-block" aria-labelledby="main-navigation-heading">
-    <h2 id="main-navigation-heading" class="visually-hidden">Main Navigation</h2>
-
-    <div class="container-xl">
-      <?php wp_nav_menu(array('menu' => 'Main')); ?>
-    </div>
-  </nav>
-  */ ?>
 </header>

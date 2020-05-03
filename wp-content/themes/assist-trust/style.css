@@ -5,13 +5,16 @@
  * Version: 0.0.1
  */
 
- :root {
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+:root {
   overflow-x: hidden;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
   color: #004279;
+  font-family: 'Roboto', sans-serif;
+  min-width: 320px;
 }
 
 *:focus {
@@ -25,7 +28,6 @@ a {
 
 blockquote {
   quotes: "\201C""\201D""\2018""\2019";
-  font-weight: bold;
 }
 
 blockquote p {
@@ -55,7 +57,7 @@ blockquote footer {
   margin-top: 1em;
 }
 
-@media (min-width: 768px) { /* medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { /* medium devices */
   blockquote p {
     font-size: 1.25rem;
   }
@@ -144,15 +146,15 @@ blockquote footer {
 }
 
 .header {
-  height: 44px;
+  min-height: 44px;
   color: #fff;
   background-color: #004279;
 }
 
-.header .button { /* todo */
+.header .button { /* Todo: flatten selector */
   height: 100%;
   min-height: auto;
-  padding: .5rem 1rem;
+  padding: 5px 1rem;
   margin-right: -0.25rem; /* remaining gutter after deducting .row from .container */
   font-size: .75rem;
 }
@@ -170,11 +172,16 @@ blockquote footer {
 }
 
 .logo {
-  max-height: 44px;
+  height: 44px;
   max-width: 220px;
   padding-top: .5rem;
   padding-bottom: .5rem;
-  margin-left: -0.75rem; /* gutter */
+}
+
+.slogan-social-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .slogan {
@@ -186,38 +193,115 @@ blockquote footer {
   line-height: 1;
   letter-spacing: 1px;
   width: max-content;
-  margin: 0 auto;
 }
 
 .link--email {
   color: inherit;
 }
 
-.carousel {
-  height: 360px;
-  background: #ddd;
-}
-
-@media (min-width: 576px) { /* small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { /* small devices */
   .header {
     height: auto;
   }
 
-  .header .button { /* todo */
+  .header .button { /* Todo: flatten selector */
     margin-right: 0;
   }
 
   .logo {
-    max-height: none;
-    margin-left: auto;
+    height: auto;
   }
 }
 
-@media (min-width: 768px) { /* medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { /* medium devices */
   .slogan {
     font-size: 1.4rem;
     line-height: 1.2;
   }
+}
+
+/* slider */
+
+.slider--wrapper {
+  position: relative;
+}
+
+.slider {
+  overflow: hidden;
+  color: #fff;
+}
+
+.slider ul {
+  margin: 0 auto;
+  padding: 0;
+  background-color: rgba(0, 0, 0, .5);
+
+  display: flex;
+}
+
+.slider li {
+  list-style: none;
+
+  flex: 0 0 100%;
+}
+
+.slider figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.slider figcaption {
+  position: absolute;
+  height: 2rem;
+}
+
+.slider img {
+  display: block;
+  height: 400px;
+  width: 100%;
+  object-fit: cover; /* Todo: polyfill for IE */
+}
+
+.slider--controls li {
+  list-style: none;
+}
+
+#previous,
+#next {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  color: #fff;
+  background:rgba(255, 255, 255, .5);
+}
+
+#previous {
+  left: 0;
+}
+
+#next {
+  right: 0;
+}
+
+.slider--nav {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.slider--nav > * + * {
+  margin-left: .5rem;
+}
+
+.slider--nav button { 
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  background-color: #fff;
 }
 
 /* footer */
@@ -231,7 +315,7 @@ blockquote footer {
   color: #fff;
 }
 
-@media (min-width: 576px) { /* small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { /* small devices */
   .page-footer--right {
     text-align: right;
   }
@@ -244,26 +328,23 @@ blockquote footer {
 }
 
 #menu-main {
-  position: absolute;
-  left: 0;
+  font-size: 0.75rem;
+}
+
+#menu-main > ul {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
   line-height: 1.25;
   background-color: inherit;
-  font-size: 0.75rem;
-  padding: 0 .5rem;
+  margin-left: -1rem; /* gutter */
+  margin-right: -1rem; /* gutter */
 }
 
 #menu-main a {
   display: block;
   transition: color .5s;
   color: #fff;
-}
-
-#menu-main .menu-item {
-  position: relative;
 }
 
 #menu-main button {
@@ -279,6 +360,12 @@ blockquote footer {
   transition: transform .5s;
 }
 
+#menu-main .sub-menu {
+  overflow-x: auto;
+  width: 100%;
+  white-space: nowrap;
+}
+
 #menu-main [aria-expanded="true"] + .sub-menu {
   display: block;
 }
@@ -288,8 +375,18 @@ blockquote footer {
 }
 
 #menu-main a,
-#menu-main button {
+#menu-main button,
+#menu-main h3 {
   padding: 10px .5rem;
+}
+
+#menu-main h3 {
+  color: #1e1e1e;
+  font-weight: bold;
+}
+
+#menu-main h3 > span {
+  border-bottom: 2px solid;
 }
 
 #menu-main .sub-menu {
@@ -306,18 +403,21 @@ blockquote footer {
   width: 100%;
 }
 
-#menu-main .sub-menu a {
-  text-indent: 30px;
-}
-
 #menu-main .sub-menu,
 #menu-main .menu-item:hover {
   background-color: rgba(0, 66, 121, 0.5); /* #004279 */
 }
 
-@media (min-width: 576px) { /* small devices (landscape phones, 576px and up) */
+#menu-main .sub-menu--list {
+  margin-left: -1rem; /* gutter */
+  margin-right: -1rem; /* gutter */
+}
+
+@media (min-width: 576px) { /* small devices */
   #menu-main-container {
     background-color: #fff;
+    top: 20px;
+    z-index: 1;
 
     /* .full-width */
     width: 100vw;
@@ -328,10 +428,11 @@ blockquote footer {
     margin-right: -50vw;
   }
 
-  #menu-main {
+  #menu-main > ul {
     position: static;
     flex-direction: row;
-    margin: 20px auto 0;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
   }
 
@@ -366,30 +467,31 @@ blockquote footer {
   #menu-main .sub-menu {
     position: absolute;
     min-width: 100%;
-    width: auto; /* IE fallback */
-    width: max-content;
-    background-color: #fff;
     text-align: left;
+    background-color: #e2e6f0;
   }
 
   #menu-main .menu-item:hover > .sub-menu {
     display: block;
   }
 
-  #menu-main .sub-menu a {
-    text-indent: 0;
+  #menu-main .sub-menu--list {
+    display: flex;
+    margin: 1rem auto;
+  }
+
+  #menu-main .sub-menu--list > * + * {
+    margin-left: 1rem;
   }
 }
-
-@media (min-width: 768px) { /* medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { /* medium devices */
   #menu-main {
     font-size: 1rem;
-    padding-left: 0;
-    padding-right: 0;
   }
 
   #menu-main a,
-  #menu-main button {
+  #menu-main button,
+  #menu-main h3 {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -402,20 +504,33 @@ blockquote footer {
   width: 24px;
 }
 
+.button--menu-toggle + nav {
+  display: none;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
 .button--menu-toggle[aria-expanded="true"] + nav {
   display: block;
+}
+
+@media (min-width: 576px) { /* small devices */
+  .button--menu-toggle + nav {
+    display: block !important;
+    position: static !important;
+  }
 }
 
 /* social icons */
 
 .social-icons--list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem;
+  display: flex;
 }
 
-.social-icons a {
-  display: flex;
+.social-icons--list > * + * {
+  margin-left: 1rem;
 }
 
 .social-icons svg {
@@ -435,7 +550,7 @@ blockquote footer {
   background-color: #e2e6f0;
 }
 
-@media (min-width: 768px) { /* medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { /* medium devices */
   .banner {
     font-size: 1.25rem;
   }
