@@ -372,10 +372,6 @@ blockquote footer {
   background-color: rgba(0, 66, 121, 0.9); /* #004279 */
 }
 
-#menu-main {
-  font-size: 0.75rem;
-}
-
 #menu-main ul ul {
   padding-left: 1rem;
 }
@@ -483,6 +479,10 @@ blockquote footer {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
+  }
+
+  #menu-main {
+    font-size: 0.75rem;
   }
 
   #menu-main ul {
