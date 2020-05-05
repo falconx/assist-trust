@@ -553,7 +553,7 @@ blockquote footer {
     grid-auto-flow: column;
     grid-template-columns: repeat(auto-fit, minmax(0, -webkit-min-content));
     grid-template-columns: repeat(auto-fit, minmax(0, min-content));
-    grid-gap: 0 1rem;
+    grid-gap: 0 3rem;
     margin: 1rem auto;
   }
 }
