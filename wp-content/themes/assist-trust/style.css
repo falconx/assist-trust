@@ -423,6 +423,7 @@ blockquote footer {
 #menu-main button,
 #menu-main h3 {
   padding: 10px .5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, .25);
 }
 
 #menu-main h3 {
@@ -483,6 +484,12 @@ blockquote footer {
 
   #menu-main {
     font-size: 0.75rem;
+  }
+
+  #menu-main a,
+  #menu-main button,
+  #menu-main h3 {
+    border-bottom: none;
   }
 
   #menu-main ul {
