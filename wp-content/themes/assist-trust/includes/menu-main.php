@@ -22,17 +22,17 @@
               <div class="sub-menu sub-menu__1">
                 <div class="container-xl">
                   <ul class="sub-menu--list">
+                    <?php
+
+                    // inline grid styles necessary to support particular grid layout in IE -
+                    // with the effect of moving grouped items into their own column
+                    $gridColumnIndex = 2;
+
+                    // for ungrouped items
+                    $gridRowIndex = 1;
+
+                    ?>
                     <?php foreach($item['grouped'] as $group): ?>
-                      <?php
-
-                      // inline grid styles necessary to support particular grid layout in IE -
-                      // with the effect of moving grouped items into their own column
-                      $gridColumnIndex = 2;
-
-                      // for ungrouped items
-                      $gridRowIndex = 1;
-
-                      ?>
                       <?php if (!empty($group['children'])): ?>
                         <li class="grouped" style="grid-column: <?php echo $gridColumnIndex; ?>; -ms-grid-column: <?php echo $gridColumnIndex++; ?>">
                           <h3 class="d-none d-sm-block">
