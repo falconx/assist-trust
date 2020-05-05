@@ -50,6 +50,10 @@ ol[class] {
 /* Have link and buttons be indistinguishable */
 a,
 button {
+  /* IE */
+  border: none;
+  background: none;
+
   all: unset;
   cursor: pointer;
 }

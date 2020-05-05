@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   // invert aria-expanded state for toggle buttons on click
-  document.querySelectorAll('[aria-expanded]').forEach(function(button) {
+  Array.prototype.forEach.call(document.querySelectorAll('[aria-expanded]'), function(button) {
     button.addEventListener('click', function() {
       var expanded = button.getAttribute('aria-expanded') === 'true';
       var nav = button.nextElementSibling;
@@ -44,7 +44,7 @@ document.addEventListener('click', function(e) {
   if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
     var expanded = menu.querySelectorAll('[aria-expanded="true"]');
 
-    expanded.forEach(function(item) {
+    Array.prototype.forEach.call(expanded, function(item) {
       item.setAttribute('aria-expanded', false);
     });
 

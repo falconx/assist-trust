@@ -176,12 +176,25 @@ blockquote footer {
   max-width: 220px;
   padding-top: .5rem;
   padding-bottom: .5rem;
+
+  /* IE fix */
+  max-height: 96px; /* intrinsic image height */
 }
 
 .slogan-social-container {
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-between;
+}
+
+/**
+ * mimic flexbox space-evenly layout for IE
+ * https://stackoverflow.com/questions/47534216/how-to-make-css-justify-contentspace-evenly-fallback-to-space-between-on-safari
+ */
+.slogan-social-container:before,
+.slogan-social-container:after {
+  content: '';
+  display: block;
 }
 
 .slogan {
@@ -201,7 +214,7 @@ blockquote footer {
 
 @media (min-width: 576px) { /* small devices */
   .header {
-    height: auto;
+    padding-bottom: 20px;
   }
 
   .header .button { /* Todo: flatten selector */
@@ -259,7 +272,7 @@ blockquote footer {
 
 .slider img {
   display: block;
-  height: 400px;
+  height: 200px;
   width: 100%;
   object-fit: cover; /* Todo: polyfill for IE */
 }
@@ -272,17 +285,20 @@ blockquote footer {
 #next {
   position: absolute;
   top: 0;
-  height: 100%;
+  bottom: 0;
+  margin: auto;
+  height: 2rem;
+  width: 2rem;
   color: #fff;
-  background:rgba(255, 255, 255, .5);
 }
 
 #previous {
-  left: 0;
+  left: 1rem;
 }
 
 #next {
-  right: 0;
+  right: 1rem;
+  transform: scaleX(-1);
 }
 
 .slider--nav {
@@ -302,6 +318,22 @@ blockquote footer {
   width: 1rem;
   border-radius: 50%;
   background-color: #fff;
+}
+
+.slider--nav li.active button {
+  background-color: #d70c8c;
+}
+
+@media (min-width: 768px) { /* medium devices */
+  .slider img {
+    height: 400px;
+  }
+
+  #previous,
+  #next {
+    height: 4rem;
+    width: 4rem;
+  }
 }
 
 /* footer */
@@ -329,6 +361,14 @@ blockquote footer {
 
 #menu-main {
   font-size: 0.75rem;
+}
+
+#menu-main ul ul {
+  text-indent: 1rem;
+}
+
+#menu-main ul ul ul {
+  text-indent: 2rem;
 }
 
 #menu-main > ul {
@@ -413,6 +453,20 @@ blockquote footer {
   margin-right: -1rem; /* gutter */
 }
 
+#menu-main .sub-menu--list .grouped {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 999;
+  grid-row: 1 / 1000;
+}
+
+#menu-main .sub-menu--list .ungrouped {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  /* -ms-grid-row: 1; */
+  /* -ms-grid-row-span: 999; */
+  /* grid-row: 1 / 1000; */
+}
+
 @media (min-width: 576px) { /* small devices */
   #menu-main-container {
     background-color: #fff;
@@ -426,6 +480,10 @@ blockquote footer {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
+  }
+
+  #menu-main ul {
+    text-indent: 0 !important;
   }
 
   #menu-main > ul {
@@ -476,14 +534,16 @@ blockquote footer {
   }
 
   #menu-main .sub-menu--list {
-    display: flex;
+    display: -ms-grid;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fit, minmax(0, -webkit-min-content));
+    grid-template-columns: repeat(auto-fit, minmax(0, min-content));
+    grid-gap: 0 1rem;
     margin: 1rem auto;
   }
-
-  #menu-main .sub-menu--list > * + * {
-    margin-left: 1rem;
-  }
 }
+
 @media (min-width: 768px) { /* medium devices */
   #menu-main {
     font-size: 1rem;
@@ -537,6 +597,11 @@ blockquote footer {
   height: 20px;
   width: 20px;
   transition: all .2s ease-in-out;
+}
+
+.social-icons a {
+  /* IE fix */
+  color: inherit;
 }
 
 .social-icons a:hover svg,

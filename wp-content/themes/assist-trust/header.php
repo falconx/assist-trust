@@ -13,6 +13,7 @@
   <link href="<?php echo get_bloginfo('template_directory'); ?>/bootstrap-utilities.css" rel="stylesheet" />
   <link href="<?php echo get_bloginfo('template_directory'); ?>/style.css" rel="stylesheet" />
 
+  <script src="<?php echo get_bloginfo('template_directory'); ?>/js/closest.polyfill.js"></script>
   <script src="<?php echo get_bloginfo('template_directory'); ?>/js/main.js"></script>
   <script src="<?php echo get_bloginfo('template_directory'); ?>/js/slider.js"></script>
 
