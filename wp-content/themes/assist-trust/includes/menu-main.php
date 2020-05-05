@@ -19,7 +19,7 @@
                 </svg>
               </button>
 
-              <div class="sub-menu">
+              <div class="sub-menu sub-menu__1">
                 <div class="container-xl">
                   <ul class="sub-menu--list">
                     <?php foreach($item['grouped'] as $group): ?>
@@ -35,11 +35,19 @@
                       ?>
                       <?php if (!empty($group['children'])): ?>
                         <li class="grouped" style="grid-column: <?php echo $gridColumnIndex; ?>; -ms-grid-column: <?php echo $gridColumnIndex++; ?>">
-                          <h3>
+                          <h3 class="d-none d-sm-block">
                             <span><?php echo $group['title']; ?></span>
                           </h3>
 
-                          <ul class="">
+                          <button type="button" aria-expanded="false" class="d-sm-none link__animated-inner">
+                            <span><?php echo $group['title']; ?></span>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+                              <path d="M53 29H35V11a3 3 0 0 0-6 0v18H11a3 3 0 0 0 0 6h18v18a3 3 0 0 0 6 0V35h18a3 3 0 0 0 0-6z" fill="currentColor"></path>
+                            </svg>
+                          </button>
+
+                          <ul class="sub-menu sub-menu__2">
                             <?php foreach($group['children'] as $child): ?>
                               <li>
                                 <a href="<?php echo $child['url']; ?>" title="<?php echo $child['title']; ?>" class="link__animated-inner">

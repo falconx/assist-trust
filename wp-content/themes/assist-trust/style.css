@@ -377,11 +377,7 @@ blockquote footer {
 }
 
 #menu-main ul ul {
-  text-indent: 1rem;
-}
-
-#menu-main ul ul ul {
-  text-indent: 2rem;
+  padding-left: 1rem;
 }
 
 #menu-main > ul {
@@ -413,7 +409,7 @@ blockquote footer {
   transition: transform .5s;
 }
 
-#menu-main .sub-menu {
+#menu-main .sub-menu__1 {
   overflow-x: auto;
   width: 100%;
   white-space: nowrap;
@@ -443,22 +439,19 @@ blockquote footer {
 }
 
 #menu-main .sub-menu {
-  left: 0;
-  z-index: 1;
-  width: 100%;
-
   /* hide and reveal on hover/focus */
   display: none;
 }
 
-#menu-main .menu-item,
-#menu-main .sub-menu {
+#menu-main .sub-menu__1 {
+  left: 0;
+  z-index: 1;
   width: 100%;
 }
 
-#menu-main .sub-menu,
-#menu-main .menu-item:hover {
-  background-color: rgba(0, 66, 121, 0.5); /* #004279 */
+#menu-main .menu-item,
+#menu-main .sub-menu__1 {
+  width: 100%;
 }
 
 #menu-main .sub-menu--list {
@@ -493,7 +486,7 @@ blockquote footer {
   }
 
   #menu-main ul {
-    text-indent: 0 !important;
+    padding-left: 0 !important;
   }
 
   #menu-main > ul {
@@ -532,11 +525,15 @@ blockquote footer {
     background-color: inherit;
   }
 
-  #menu-main .sub-menu {
+  #menu-main .sub-menu__1 {
     position: absolute;
     min-width: 100%;
     text-align: left;
     background-color: #e2e6f0;
+  }
+
+  #menu-main .sub-menu .sub-menu {
+    display: block;
   }
 
   #menu-main .menu-item:hover > .sub-menu {
