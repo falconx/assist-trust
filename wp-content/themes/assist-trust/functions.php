@@ -48,13 +48,15 @@ function wp_get_menu_array($menu) {
  * 
  * @uses  wp_get_menu_array()
  * 
- * @param   String  $menu
- * @return  Array|null $tree
+ * @param   String      $menu
+ * @return  Array|null  $tree
  */
 function wp_get_main_menu($menu) {
   $items = wp_get_menu_array('Main');
 
   foreach ($items as &$item) {
+    $item['showMegaMenu'] = false;
+
     // -1 ensures that the group appears before any others
     $group = array(
       '-1' => array()
@@ -63,7 +65,9 @@ function wp_get_main_menu($menu) {
     foreach ($item['children'] as $subItem) {
       $id = $subItem['ID'];
 
+      
       if (count($subItem['children'])) {
+        $item['showMegaMenu'] = true;
         $group[$id] = $subItem;
       } else {
         $group['-1'][$id] = $subItem;

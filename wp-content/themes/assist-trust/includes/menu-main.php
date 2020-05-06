@@ -18,58 +18,71 @@
                   <path d="M53 29H35V11a3 3 0 0 0-6 0v18H11a3 3 0 0 0 0 6h18v18a3 3 0 0 0 6 0V35h18a3 3 0 0 0 0-6z" fill="currentColor"></path>
                 </svg>
               </button>
+              <?php
 
-              <div class="sub-menu sub-menu__1">
-                <div class="container-xl">
-                  <ul class="sub-menu--list">
-                    <?php
+              // inline grid styles necessary to support particular grid layout in IE -
+              // with the effect of moving grouped items into their own column
+              $gridColumnIndex = 2;
 
-                    // inline grid styles necessary to support particular grid layout in IE -
-                    // with the effect of moving grouped items into their own column
-                    $gridColumnIndex = 2;
+              // for ungrouped items
+              $gridRowIndex = 1;
 
-                    // for ungrouped items
-                    $gridRowIndex = 1;
+              ?>
+              <?php if ($item['showMegaMenu']): ?>
+                <div class="sub-menu sub-menu__1 mega-menu">
+                  <div class="container-xl">
+                    <ul class="sub-menu--list">
+                      <?php foreach($item['grouped'] as $group): ?>
+                        <?php if (!empty($group['children'])): ?>
+                          <li class="grouped" style="grid-column: <?php echo $gridColumnIndex; ?>; -ms-grid-column: <?php echo $gridColumnIndex++; ?>">
+                            <h3 class="d-none d-sm-block">
+                              <span><?php echo $group['title']; ?></span>
+                            </h3>
 
-                    ?>
-                    <?php foreach($item['grouped'] as $group): ?>
-                      <?php if (!empty($group['children'])): ?>
-                        <li class="grouped" style="grid-column: <?php echo $gridColumnIndex; ?>; -ms-grid-column: <?php echo $gridColumnIndex++; ?>">
-                          <h3 class="d-none d-sm-block">
-                            <span><?php echo $group['title']; ?></span>
-                          </h3>
+                            <button type="button" aria-expanded="false" class="d-sm-none link__animated-inner">
+                              <span><?php echo $group['title']; ?></span>
 
-                          <button type="button" aria-expanded="false" class="d-sm-none link__animated-inner">
-                            <span><?php echo $group['title']; ?></span>
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <path d="M53 29H35V11a3 3 0 0 0-6 0v18H11a3 3 0 0 0 0 6h18v18a3 3 0 0 0 6 0V35h18a3 3 0 0 0 0-6z" fill="currentColor"></path>
+                              </svg>
+                            </button>
 
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
-                              <path d="M53 29H35V11a3 3 0 0 0-6 0v18H11a3 3 0 0 0 0 6h18v18a3 3 0 0 0 6 0V35h18a3 3 0 0 0 0-6z" fill="currentColor"></path>
-                            </svg>
-                          </button>
-
-                          <ul class="sub-menu sub-menu__2">
-                            <?php foreach($group['children'] as $child): ?>
-                              <li>
-                                <a href="<?php echo $child['url']; ?>" title="<?php echo $child['title']; ?>" class="link__animated-inner">
-                                  <span><?php echo $child['title']; ?></span>
-                                </a>
-                              </li>
-                            <?php endforeach; ?>
-                          </ul>
-                        </li>
-                      <?php else: ?>
-                        <?php foreach($group as $child): ?>
-                          <li class="ungrouped" style="grid-row: <?php echo $gridRowIndex; ?>; -ms-grid-row: <?php echo $gridRowIndex++; ?>">
-                            <a href="<?php echo $child['url']; ?>" title="<?php echo $child['title']; ?>" class="link__animated-inner">
-                              <span><?php echo $child['title']; ?></span>
-                            </a>
+                            <ul class="sub-menu sub-menu__2">
+                              <?php foreach($group['children'] as $child): ?>
+                                <li>
+                                  <a href="<?php echo $child['url']; ?>" title="<?php echo $child['title']; ?>" class="link__animated-inner">
+                                    <span><?php echo $child['title']; ?></span>
+                                  </a>
+                                </li>
+                              <?php endforeach; ?>
+                            </ul>
                           </li>
-                        <?php endforeach; ?>
-                      <?php endif; ?>
+                        <?php else: ?>
+                          <?php foreach($group as $child): ?>
+                            <li class="ungrouped" style="grid-row: <?php echo $gridRowIndex; ?>; -ms-grid-row: <?php echo $gridRowIndex++; ?>">
+                              <a href="<?php echo $child['url']; ?>" title="<?php echo $child['title']; ?>" class="link__animated-inner">
+                                <span><?php echo $child['title']; ?></span>
+                              </a>
+                            </li>
+                          <?php endforeach; ?>
+                        <?php endif; ?>
+                      <?php endforeach; ?>
+                    </ul>
+                  </div>
+                </div>
+              <?php else: ?>
+                <div class="sub-menu sub-menu__1">
+                  <ul class="sub-menu--list">
+                    <?php foreach($item['children'] as $child): ?>
+                      <li>
+                        <a href="<?php echo $child['url']; ?>" title="<?php echo $child['title']; ?>" class="link__animated-inner">
+                          <span><?php echo $child['title']; ?></span>
+                        </a>
+                      </li>
                     <?php endforeach; ?>
                   </ul>
                 </div>
-              </div>
+              <?php endif; ?>
             <?php else: ?>
               <a href="<?php echo $item['url']; ?>" title="<?php echo $item['title']; ?>" class="link__animated-inner">
                 <span><?php echo $item['title']; ?></span>
