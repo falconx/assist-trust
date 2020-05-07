@@ -48,10 +48,9 @@ function wp_get_menu_array($menu) {
  * 
  * @uses  wp_get_menu_array()
  * 
- * @param   String      $menu
  * @return  Array|null  $tree
  */
-function wp_get_main_menu($menu) {
+function wp_get_main_menu() {
   $items = wp_get_menu_array('Main');
 
   foreach ($items as &$item) {
