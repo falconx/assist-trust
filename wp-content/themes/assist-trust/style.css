@@ -12,6 +12,8 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   color: #004279;
   font-family: 'Roboto', sans-serif;
   min-width: 320px;
@@ -362,6 +364,7 @@ blockquote footer {
 /* footer */
 
 .page-footer {
+  margin-top: auto;
   color: #fff;
   background-color: #004279;
 }
