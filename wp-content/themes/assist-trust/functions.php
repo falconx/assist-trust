@@ -65,7 +65,7 @@ function wp_get_main_menu() {
       $id = $subItem['ID'];
 
       
-      if ((array)count($subItem['children'])) {
+      if (count((array)$subItem['children'])) {
         $item['showMegaMenu'] = true;
         $group[$id] = $subItem;
       } else {
