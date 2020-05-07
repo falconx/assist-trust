@@ -1,3 +1,5 @@
+<?php $slides = get_field('slides'); ?>
+
 <svg hidden>
   <symbol id="arrow-left" viewBox="0 0 10 10">
     <path fill="currentColor" d="m9 4h-4v-2l-4 3 4 3v-2h4z"></path>
@@ -12,24 +14,16 @@
     <h2 id="slider-heading" class="visually-hidden">Slider</h2>
 
     <ul>
-      <li>
-        <figure>
-          <img src="https://dummyimage.com/1200x400/000/fff" alt="" />
-          <?php // <figcaption>[caption here]</figcaption> ?>
-        </figure>
-      </li>
-      <li>
-        <figure>
-          <img src="https://dummyimage.com/1200x400/888/fff" alt="" />
-          <?php // <figcaption>[caption here]</figcaption> ?>
-        </figure>
-      </li>
-      <li>
-        <figure>
-          <img src="https://dummyimage.com/1200x400/555/fff" alt="" />
-          <?php // <figcaption>[caption here]</figcaption> ?>
-        </figure>
-      </li>
+      <?php foreach($slides as $slide): ?>
+        <li>
+          <figure>
+            <img src="<?php echo $slide['image']['url']; ?>" alt="<?php echo $slide['image']['alt']; ?>" />
+            <?php if ($slide['image']['alt']): ?>
+              <figcaption><?php echo $slide['image']['alt']; ?></figcaption>
+            <?php endif; ?>
+          </figure>
+        </li>
+      <?php endforeach; ?>
     </ul>
   </div>
 
@@ -47,20 +41,12 @@
   </ul>
 
   <ul class="slider--nav" aria-label="slider navigation">
-    <li class="active">
-      <button type="button">
-        <span class="visually-hidden">move to slide 1</span>
-      </button>
-    </li>
-    <li>
-      <button type="button">
-        <span class="visually-hidden">move to slide 2</span>
-      </button>
-    </li>
-    <li>
-      <button type="button">
-        <span class="visually-hidden">move to slide 3</span>
-      </button>
-    </li>
+    <?php for($i = 0; $i < count($slides); $i++): ?>
+      <li class="<?php if ($i === 0): ?>active<?php endif; ?>"">
+        <button type="button">
+          <span class="visually-hidden">move to slide <?php echo $i + 1; ?></span>
+        </button>
+      </li>
+    <?php endfor; ?>
   </ul>
 </div>

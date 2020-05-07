@@ -303,15 +303,24 @@ blockquote footer {
   height: 2rem;
   width: 2rem;
   color: #fff;
+  transition: all .2s ease-in-out;
 }
 
 #previous {
   left: 1rem;
 }
 
+#previous:hover {
+  transform: scale(1.3);
+}
+
 #next {
   right: 1rem;
-  transform: scaleX(-1);
+  transform: rotate(180deg);
+}
+
+#next:hover {
+  transform: rotate(180deg) scale(1.3);
 }
 
 .slider--nav {
@@ -333,6 +342,7 @@ blockquote footer {
   background-color: #fff;
 }
 
+.slider--nav li:hover button,
 .slider--nav li.active button {
   background-color: #d70c8c;
 }
@@ -625,8 +635,7 @@ blockquote footer {
   color: inherit;
 }
 
-.social-icons a:hover svg,
-.social-icons a:focus svg {
+.social-icons a:hover svg {
   transform: scale(1.3);
 }
 
