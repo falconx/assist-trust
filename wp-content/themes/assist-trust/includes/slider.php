@@ -1,4 +1,4 @@
-<?php $slides = get_field('slides'); ?>
+<?php $slides = (array)get_field('slides'); ?>
 
 <svg hidden>
   <symbol id="arrow-left" viewBox="0 0 10 10">

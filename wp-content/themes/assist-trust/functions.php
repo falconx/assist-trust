@@ -61,11 +61,11 @@ function wp_get_main_menu() {
       '-1' => array()
     );
 
-    foreach ($item['children'] as $subItem) {
+    foreach ((array)$item['children'] as $subItem) {
       $id = $subItem['ID'];
 
       
-      if (count($subItem['children'])) {
+      if ((array)count($subItem['children'])) {
         $item['showMegaMenu'] = true;
         $group[$id] = $subItem;
       } else {
