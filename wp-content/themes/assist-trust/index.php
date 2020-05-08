@@ -12,9 +12,9 @@ $has_sidebar = $quote['text'] && $quote['author'];
 
 <?php include get_theme_file_path('/includes/slider.php'); ?>
 
-<main class="container-xl<?php echo ($has_sidebar) ? ' with-sidebar' : '' ?>">
+<div class="container-xl<?php echo ($has_sidebar) ? ' with-sidebar' : '' ?>">
   <div class="row py-5">
-    <div class="content col-md-<?php echo ($has_sidebar) ? '8' : '12'; ?>">
+    <main class="content col-md-<?php echo ($has_sidebar) ? '8' : '12'; ?>">
       <?php if (get_field('content')): ?>
         <?php the_field('content'); ?>
       <?php endif; ?>
@@ -61,6 +61,6 @@ $has_sidebar = $quote['text'] && $quote['author'];
       <?php endwhile; ?>
     </div>
   <?php endif; ?>
-</main>
+</div>
 
 <?php get_footer(); ?>

@@ -386,7 +386,11 @@ blockquote footer {
 }
 
 #menu-main ul ul {
-  padding-left: 1rem;
+  padding-left: 3rem;
+}
+
+#menu-main ul ul ul {
+  padding-left: 2rem;
 }
 
 #menu-main > ul {
@@ -416,12 +420,6 @@ blockquote footer {
   height: 1.5em;
   width: 1.5em;
   transition: transform .5s;
-}
-
-#menu-main .mega-menu {
-  overflow-x: auto;
-  width: 100%;
-  white-space: nowrap;
 }
 
 #menu-main [aria-expanded="true"] + .sub-menu {
@@ -454,13 +452,12 @@ blockquote footer {
 }
 
 #menu-main .mega-menu {
-  left: 0;
-  z-index: 1;
-  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-left: -1rem; /* gutter */
 }
 
-#menu-main .menu-item,
-#menu-main .mega-menu {
+#menu-main .menu-item {
   width: 100%;
 }
 
@@ -552,6 +549,8 @@ blockquote footer {
   }
 
   #menu-main .sub-menu.mega-menu {
+    left: 0;
+    margin: 0;
     min-width: 100%;
   }
 
