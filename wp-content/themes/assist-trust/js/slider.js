@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
   var slider = document.querySelector('.slider');
+
+  if (!slider) {
+    return;
+  }
+
   var slides = slider.querySelectorAll('li');
   var previous = document.getElementById('previous');
   var next = document.getElementById('next');
