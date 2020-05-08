@@ -18,7 +18,7 @@ $has_sidebar = $quote['text'] && $quote['author'];
       <?php if (get_field('content')): ?>
         <?php the_field('content'); ?>
       <?php endif; ?>
-    </div>
+    </main>
 
     <?php if ($has_sidebar): ?>
       <aside class="sidebar col-md-4 mt-3 mt-md-0">
