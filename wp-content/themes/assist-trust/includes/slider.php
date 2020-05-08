@@ -43,7 +43,7 @@
 
     <ul class="slider--nav" aria-label="slider navigation">
       <?php for($i = 0; $i < count($slides); $i++): ?>
-        <li class="<?php if ($i === 0): ?>active<?php endif; ?>"">
+        <li class="<?php if ($i === 0): ?>active<?php endif; ?>">
           <button type="button">
             <span class="visually-hidden">move to slide <?php echo $i + 1; ?></span>
           </button>
