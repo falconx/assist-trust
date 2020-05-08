@@ -12,13 +12,13 @@ $has_sidebar = $quote['text'] && $quote['author'];
 
 <?php include get_theme_file_path('/includes/slider.php'); ?>
 
-<main class="container-xl<?php echo ($has_sidebar) ? ' with-sidebar' : '' ?>">
+<div class="container-xl<?php echo ($has_sidebar) ? ' with-sidebar' : '' ?>">
   <div class="row py-5">
-    <div class="content col-md-<?php echo ($has_sidebar) ? '8' : '12'; ?>">
+    <main class="content col-md-<?php echo ($has_sidebar) ? '8' : '12'; ?>">
       <?php if (get_field('content')): ?>
         <?php the_field('content'); ?>
       <?php endif; ?>
-    </div>
+    </main>
 
     <?php if ($has_sidebar): ?>
       <aside class="sidebar col-md-4 mt-3 mt-md-0">
@@ -38,7 +38,7 @@ $has_sidebar = $quote['text'] && $quote['author'];
             
             ?>
             <div class="row">
-              <div class="col-sm-6<?php if ($banner['image_position'] == 'left'): ?> order-lg-2<?php endif; ?> px-lg-4">
+              <div class="col-sm-6 px-lg-4">
                 <div class="row row-cols-1 banner--content">
                   <div class="col mt-3 mt-sm-0">
                     <p><?php echo $banner['text']; ?></p>
@@ -52,7 +52,7 @@ $has_sidebar = $quote['text'] && $quote['author'];
                 </div>
               </div>
 
-              <div class="col-sm-6 px-lg-4 order-first">
+              <div class="col-sm-6 px-lg-4 order-first<?php if ($banner['image_position'] == 'right'): ?> order-sm-last<?php endif; ?>">
                 <img src="<?php echo $banner['image']; ?>" alt="" />
               </div>
             </div>
@@ -61,6 +61,6 @@ $has_sidebar = $quote['text'] && $quote['author'];
       <?php endwhile; ?>
     </div>
   <?php endif; ?>
-</main>
+</div>
 
 <?php get_footer(); ?>
