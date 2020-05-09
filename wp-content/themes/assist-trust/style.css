@@ -180,6 +180,7 @@ blockquote footer {
 }
 
 .header *:focus {
+  outline-offset: 0;
   outline-color: #fff;
 }
 
@@ -243,6 +244,10 @@ blockquote footer {
 @media (min-width: 576px) { /* small devices */
   .header {
     padding-bottom: 20px;
+  }
+
+  .header *:focus {
+    outline-offset: 5px;
   }
 
   .header .button { /* Todo: flatten selector */
@@ -404,10 +409,6 @@ blockquote footer {
 
 /* main menu */
 
-#menu-main *:focus {
-  outline-color: #d70c8c;
-}
-
 #menu-main-container {
   background-color: rgba(0, 66, 121, 0.9); /* #004279 */
 }
@@ -521,6 +522,10 @@ blockquote footer {
 
   #menu-main {
     font-size: 0.75rem;
+  }
+
+  #menu-main *:focus {
+    outline-color: #d70c8c;
   }
 
   #menu-main a,
