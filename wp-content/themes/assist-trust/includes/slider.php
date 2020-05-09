@@ -1,6 +1,6 @@
 <?php $slides = (array)get_field('slides'); ?>
 
-<?php if (count($slides)): ?>
+<?php if (count(array_filter($slides))): ?>
   <svg hidden>
     <symbol id="arrow-left" viewBox="0 0 10 10">
       <path fill="currentColor" d="m9 4h-4v-2l-4 3 4 3v-2h4z"></path>
