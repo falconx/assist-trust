@@ -60,6 +60,7 @@ button {
 
 /* Make images easier to work with */
 img {
+  height: auto;
   max-width: 100%;
   display: block;
 }

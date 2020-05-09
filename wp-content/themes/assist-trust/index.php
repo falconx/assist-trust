@@ -6,6 +6,8 @@ $quote = get_field('quote');
 // ensure the required fields are populated
 $has_sidebar = $quote['text'] && $quote['author'];
 
+$rows = get_field('content');
+
 ?>
 
 <?php get_header(); ?>
@@ -15,9 +17,27 @@ $has_sidebar = $quote['text'] && $quote['author'];
 <div class="container-xl<?php echo ($has_sidebar) ? ' with-sidebar' : '' ?>">
   <div class="row py-5">
     <main class="content col-md-<?php echo ($has_sidebar) ? '8' : '12'; ?>">
-      <?php if (get_field('content')): ?>
-        <?php the_field('content'); ?>
+      <?php if(!is_home()): ?>
+        <h1><?php the_title(); ?></h1>
       <?php endif; ?>
+
+      <?php foreach($rows as $row): ?>
+        <div>
+          <?php if ($row['content']): ?>
+            <?php echo $row['content']; ?>
+          <?php elseif ($row['grid']): ?>
+            <div class="layout-grid">
+              <div class="row mx-sm-n5">
+                <?php foreach($row['grid'] as $gridItem): ?>
+                  <div class="col col-12 col-sm-6 px-sm-5">
+                    <?php echo $gridItem['content']; ?>
+                  </div>
+                <?php endforeach; ?>
+              </div>
+            </div>
+          <?php endif; ?>
+        </div>
+      <?php endforeach; ?>
     </main>
 
     <?php if ($has_sidebar): ?>
@@ -37,7 +57,7 @@ $has_sidebar = $quote['text'] && $quote['author'];
             $banner = get_sub_field('banner');
             
             ?>
-            <div class="row">
+            <div class="row mx-sm-n6 mx-lg-n4">
               <div class="col-sm-6 px-lg-4">
                 <div class="row row-cols-1 banner--content">
                   <div class="col mt-3 mt-sm-0">

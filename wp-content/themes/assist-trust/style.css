@@ -174,6 +174,18 @@ blockquote footer {
   margin-top: 40px;
 }
 
+.layout-grid {
+  margin-bottom: -4rem;
+}
+
+.layout-grid .col {
+  margin-bottom: 4rem;
+}
+
+.layout-grid .col > * + * {
+  margin-top: 1rem;
+}
+
 .header {
   min-height: 44px;
   color: #fff;
