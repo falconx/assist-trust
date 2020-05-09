@@ -27,7 +27,9 @@
     <div class="container-xl">
       <div class="row">
         <div class="col-3 align-self-center">
-          <img src="<?php echo get_bloginfo('template_directory'); ?>/images/logo.svg" alt="Assist Trust" class="logo" />
+          <a href="/" class="d-block">
+            <img src="<?php echo get_bloginfo('template_directory'); ?>/images/logo.svg" alt="Assist Trust" class="logo" />
+          </a>
         </div>
 
         <div class="col align-self-center">
