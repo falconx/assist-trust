@@ -21,6 +21,7 @@ body {
 
 *:focus {
   outline: 1px dashed currentColor;
+  outline-offset: 5px;
 }
 
 a {
@@ -134,6 +135,12 @@ blockquote footer {
   transition: background-color .5s;
 }
 
+/* some duplication with *:focus due to specificity conflict with .button */
+.button:focus {
+  outline: 1px dashed currentColor;
+  outline-offset: 5px;
+}
+
 .button__primary {
   color: #fff;
   background-color: #d70c8c;
@@ -142,12 +149,18 @@ blockquote footer {
 .button__primary:hover,
 .button__primary:focus {
   background-color: #f323a6;
-  outline-color: #000;
+  outline-color: #d70c8c;
 }
 
 .button__secondary {
   color: #004279;
   background-color: #fff;
+}
+
+.button_small {
+  min-height: auto;
+  padding: 5px 1rem;
+  font-size: .75rem;
 }
 
 /* layout */
@@ -166,12 +179,12 @@ blockquote footer {
   background-color: #004279;
 }
 
+.header *:focus {
+  outline-color: #fff;
+}
+
 .header .button { /* Todo: flatten selector */
-  height: 100%;
-  min-height: auto;
-  padding: 5px 1rem;
   margin-right: -0.25rem; /* remaining gutter after deducting .row from .container */
-  font-size: .75rem;
 }
 
 .header--contact-info {
@@ -340,6 +353,7 @@ blockquote footer {
   width: 1rem;
   border-radius: 50%;
   background-color: #fff;
+  outline-color: #fff;
   transition: all .2s ease-in-out;
 }
 
@@ -371,17 +385,28 @@ blockquote footer {
   background-color: #004279;
 }
 
+.page-footer *:focus {
+  outline-color: #fff;
+}
+
 .page-footer .menu-item a {
   color: #fff;
 }
 
 @media (min-width: 576px) { /* small devices */
   .page-footer--right {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     text-align: right;
   }
 }
 
 /* main menu */
+
+#menu-main *:focus {
+  outline-color: #d70c8c;
+}
 
 #menu-main-container {
   background-color: rgba(0, 66, 121, 0.9); /* #004279 */
@@ -530,6 +555,7 @@ blockquote footer {
   #menu-main button:hover,
   #menu-main button:focus {
     color:#d70c8c;
+    outline-offset: 0;
   }
 
   #menu-main svg {
@@ -628,13 +654,21 @@ blockquote footer {
   margin-left: 1rem;
 }
 
+.social-icons__right {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .social-icons svg {
+  display: block;
   height: 20px;
   width: 20px;
   transition: all .2s ease-in-out;
 }
 
 .social-icons a {
+  display: block;
+
   /* IE fix */
   color: inherit;
 }

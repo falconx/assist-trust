@@ -11,7 +11,7 @@
   </svg>
 
   <div class="slider--wrapper">
-    <div role="region" class="slider" aria-labelledby="slider-heading" tabindex="0" aria-describedby="instructions">
+    <div role="region" class="slider" aria-labelledby="slider-heading" aria-describedby="instructions">
       <h2 id="slider-heading" class="visually-hidden">Slider</h2>
 
       <ul>
