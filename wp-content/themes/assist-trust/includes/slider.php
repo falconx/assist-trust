@@ -11,7 +11,7 @@
   </svg>
 
   <div class="slider--wrapper">
-    <div role="region" class="slider" aria-labelledby="slider-heading" tabindex="0" aria-describedby="instructions">
+    <div role="region" class="slider" aria-labelledby="slider-heading" aria-describedby="instructions">
       <h2 id="slider-heading" class="visually-hidden">Slider</h2>
 
       <ul>
@@ -48,7 +48,7 @@
 
     <ul class="slider--nav" aria-label="slider navigation">
       <?php for($i = 0; $i < count($slides); $i++): ?>
-        <li class="<?php if ($i === 0): ?>active<?php endif; ?>"">
+        <li class="<?php if ($i === 0): ?>active<?php endif; ?>">
           <button type="button">
             <span class="visually-hidden">move to slide <?php echo $i + 1; ?></span>
           </button>
