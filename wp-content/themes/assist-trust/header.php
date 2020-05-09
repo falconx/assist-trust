@@ -35,9 +35,7 @@
         <div class="col align-self-center">
           <div class="slogan-social-container">
             <div class="slogan">
-              <span>Support</span>
-              <span>Progression</span>
-              <span>Success</span>
+              <?php echo get_field('slogan', 'option'); ?>
             </div>
 
             <div class="social-icons d-none d-sm-block">
@@ -50,10 +48,10 @@
           <div class="header--contact-info">
             <div>
               <div class="mb-2">
-                Call 01603 230200<br />
-                <a class="link--email link__animated" href="mailto:office@assist.trust.co.uk">office@assist.trust.co.uk</a>
+                Call <?php echo get_field('phone_number', 'option'); ?><br />
+                <a class="link--email link__animated" href="mailto:<?php echo get_field('email_address', 'option'); ?>"><?php echo get_field('email_address', 'option'); ?></a>
               </div>
-              <a href="" class="button button__primary button_small">Donate</a>
+              <a href="<?php echo get_field('donate_url'); ?>" class="button button__primary button_small">Donate</a>
             </div>
           </div>
         </div>

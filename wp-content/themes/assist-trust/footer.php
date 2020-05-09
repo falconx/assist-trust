@@ -9,8 +9,8 @@
         </nav>
 
         <small>
-          Registered charity no.1057772<br />
-          Registered company no.3206320
+          Registered charity no.<?php echo get_field('charity_number', 'option'); ?><br />
+          Registered company no.<?php echo get_field('company_number', 'option'); ?>
         </small>
       </div>
 
@@ -23,12 +23,12 @@
           </div>
 
           <div class="mt-3">
-            <a href="" class="button button__primary button_small">Donate</a>
+            <a href="<?php echo get_field('donate_url'); ?>" class="button button__primary button_small">Donate</a>
           </div>
 
           <div class="my-3">
-            <div>Call 01603 230200</div>
-            <a href="mailto:office@assist.trust.co.uk" class="link__animated">office@assist.trust.co.uk</a>
+            <div>Call <?php echo get_field('phone_number', 'option'); ?></div>
+            <a href="mailto:<?php echo get_field('email_address', 'option'); ?>" class="link__animated"><?php echo get_field('email_address', 'option'); ?></a>
           </div>
 
           <div class="social-icons social-icons__right mt-auto">

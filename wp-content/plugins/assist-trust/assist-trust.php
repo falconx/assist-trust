@@ -1,7 +1,8 @@
 <?php
-/**
- * Plugin Name: Assist Trust
- */
+/*
+	Plugin Name: Assist Trust
+	Description: Core setup to support Assist Trust
+*/
 
 add_filter('allowed_block_types', 'at_allowed_block_types');
 function at_allowed_block_types($allowed_blocks) {
@@ -43,7 +44,6 @@ function at_acf_block_render_callback($block) {
 }
 
 add_action('admin_init', 'at_admin_init');
-
 function at_admin_init() {
   // hide default content field
   remove_post_type_support('page', 'editor');
