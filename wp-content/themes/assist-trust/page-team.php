@@ -18,20 +18,22 @@ $members = get_posts(array(
     <main class="content col-md-12">
       <h1><?php the_title(); ?></h1>
 
-      <div class="row">
+      <ul class="row team">
         <?php foreach($members as $member): ?>
-          <div class="col col-12 col-sm-6 col-md-4 col-lg-3">
-            <?php
+          <li class="col col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="team--member">
+              <?php
 
-            $fields = get_fields($member->ID);
+              $fields = get_fields($member->ID);
 
-            ?>
-            <img src="<?php echo $fields['image']['url']; ?>" alt="<?php echo $fields['image']['alt']; ?>" />
-            <h2><?php echo $member->post_title; ?></h2>
-            <?php echo $fields['about']; ?>
-          </div>
+              ?>
+              <img src="<?php echo $fields['image']['url']; ?>" alt="<?php echo $fields['image']['alt']; ?>" />
+              <h2><?php echo $member->post_title; ?></h2>
+              <p><?php echo $fields['about']; ?></p>
+            </div>
+          </li>
         <?php endforeach; ?>
-      </div>
+      </ul>
 
       <?php foreach($rows as $row): ?>
         <div>

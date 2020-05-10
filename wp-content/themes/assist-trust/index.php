@@ -17,7 +17,7 @@ $rows = get_field('content');
 <div class="container-xl<?php echo ($has_sidebar) ? ' with-sidebar' : '' ?>">
   <div class="row py-5">
     <main class="content col-md-<?php echo ($has_sidebar) ? '8' : '12'; ?>">
-      <?php if(!is_home()): ?>
+      <?php if(!is_front_page()): ?>
         <h1><?php the_title(); ?></h1>
       <?php endif; ?>
 

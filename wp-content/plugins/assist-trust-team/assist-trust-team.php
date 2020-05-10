@@ -15,6 +15,7 @@ function at_team_cpt() {
     ),
     'description' => _x('The Assist Trust team'),
     'public' => true,
+    'publicly_queryable' => false,
     'menu_position' => 20,
     'supports' => array('title', 'custom-fields')
   ));

@@ -30,6 +30,12 @@ a {
   transition: color .5s;
 }
 
+h1 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
 blockquote {
   quotes: "\201C""\201D""\2018""\2019";
 }
@@ -709,4 +715,29 @@ blockquote footer {
   .banner--content {
     max-width: 30ch;
   }
+}
+
+/* meet the team (page-team.php) */
+
+.team {
+  /* Todo: remove ul[class] selector so that this is not necessary */
+  margin-right: -0.75rem !important;
+  margin-left: -0.75rem !important;
+}
+
+.team--member > * + * {
+  margin-top: 1rem;
+}
+
+.team--member p {
+  margin-top: 0;
+  max-width: 40ch;
+}
+
+.team--member img {
+  max-width: 200px;
+}
+
+.team--member h2 {
+  font-weight: bold;
 }
