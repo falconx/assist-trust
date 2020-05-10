@@ -36,6 +36,48 @@ h1 {
   margin-bottom: 1rem;
 }
 
+/* details/summary */
+
+details {
+  background-color: #e2e6f0;
+}
+
+summary {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+summary:focus {
+  outline-offset: 0;
+}
+
+summary:after {
+  content: '';
+  display: block;
+  height: 1.5em;
+  width: 1.5em;
+  margin-left: auto;
+  background-image: url('./images/plus.svg');
+  background-position: right center;
+  background-repeat: no-repeat;
+  transition: transform 0.2s ease-in-out 0s;
+}
+
+summary::-webkit-details-marker,
+summary:focus::-webkit-details-marker {
+  background: none;
+  color: transparent;
+}
+
+details[open] summary:after {
+  transform: rotate(45deg);
+}
+
+/* blockquotes */
+
 blockquote {
   quotes: "\201C""\201D""\2018""\2019";
 }
@@ -160,7 +202,7 @@ blockquote footer {
 }
 
 .button__secondary {
-  color: #004279;
+  color: #004279 !important;
   background-color: #fff;
 }
 
@@ -413,8 +455,8 @@ blockquote footer {
   outline-color: #fff;
 }
 
-.page-footer .menu-item a {
-  color: #fff;
+.page-footer a {
+  color: currentColor;
 }
 
 @media (min-width: 576px) { /* small devices */
@@ -740,4 +782,15 @@ blockquote footer {
 
 .team--member h2 {
   font-weight: bold;
+}
+
+/* faqs page (page-faqs.php) */
+
+.faqs > * + * {
+  margin-top: .5rem;
+}
+
+.faqs--answer {
+  padding: 1rem;
+  padding-top: 0;
 }
