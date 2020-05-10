@@ -882,3 +882,27 @@ blockquote footer {
     left: -3rem;
   }
 }
+
+/* case studies page (page-case-studies.php) */
+
+.case-studies {
+  margin-bottom: -4rem;
+}
+
+.case-studies h2 {
+  color: #d70c8c;
+  font-weight: bold;
+}
+
+.case-studies h3 {
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.case-studies--entry {
+  margin-bottom: 4rem;
+}
+
+.case-studies--entry > * + * {
+  margin-top: 1rem;
+}
