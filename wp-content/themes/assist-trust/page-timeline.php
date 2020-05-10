@@ -7,6 +7,19 @@ $timeline = get_posts(array(
   'post_type' => 'timeline'
 ));
 
+function orderByYear($a, $b) {
+  $yearA = (int)get_fields($a->ID)['year'];
+  $yearB = (int)get_fields($b->ID)['year'];
+
+  if ($yearA == $yearB) {
+    return 0;
+  }
+
+  return ($yearA < $yearB) ? -1 : 1;
+}
+
+usort($timeline, 'orderByYear');
+
 ?>
 
 <?php get_header(); ?>
