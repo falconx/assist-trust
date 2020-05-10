@@ -22,7 +22,7 @@ class acf_field_clone extends acf_field {
 		
 		// vars
 		$this->name = 'clone';
-		$this->label = _x('Clone', 'noun', 'acf');
+		$this->label = __('Clone', 'noun', 'acf');
 		$this->category = 'layout';
 		$this->defaults = array(
 			'clone' 		=> '',

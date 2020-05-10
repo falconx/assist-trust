@@ -1,7 +1,7 @@
 <?php
 /* Template Name: The Team */
 
-$rows = get_field('content');
+$rows = (array)get_field('content');
 
 $members = get_posts(array(
   'post_type' => 'team'

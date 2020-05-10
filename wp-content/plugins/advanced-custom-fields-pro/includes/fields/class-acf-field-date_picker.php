@@ -56,11 +56,11 @@ class acf_field_date_picker extends acf_field {
 	   	global $wp_locale;
 	   	acf_localize_data(array(
 		   	'datePickerL10n'	=> array(
-				'closeText'			=> _x('Done',	'Date Picker JS closeText',		'acf'),
-				'currentText'		=> _x('Today',	'Date Picker JS currentText',	'acf'),
-				'nextText'			=> _x('Next',	'Date Picker JS nextText',		'acf'),
-				'prevText'			=> _x('Prev',	'Date Picker JS prevText',		'acf'),
-				'weekHeader'		=> _x('Wk',		'Date Picker JS weekHeader',	'acf'),
+				'closeText'			=> __('Done',	'Date Picker JS closeText',		'acf'),
+				'currentText'		=> __('Today',	'Date Picker JS currentText',	'acf'),
+				'nextText'			=> __('Next',	'Date Picker JS nextText',		'acf'),
+				'prevText'			=> __('Prev',	'Date Picker JS prevText',		'acf'),
+				'weekHeader'		=> __('Wk',		'Date Picker JS weekHeader',	'acf'),
 				'monthNames'        => array_values( $wp_locale->month ),
 				'monthNamesShort'   => array_values( $wp_locale->month_abbrev ),
 				'dayNames'          => array_values( $wp_locale->weekday ),

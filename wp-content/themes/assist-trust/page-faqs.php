@@ -1,7 +1,7 @@
 <?php
 /* Template Name: FAQs */
 
-$rows = get_field('content');
+$rows = (array)get_field('content');
 
 $faqs = get_posts(array(
   'post_type' => 'faqs'

@@ -10389,7 +10389,7 @@
 			
 			// default button
 			if( !props.button ) {
-				props.button = acf._x('Select', 'verb');
+				props.button = acf.__('Select', 'verb');
 			}
 			
 			// parent
@@ -10546,7 +10546,7 @@
 			
 			// default button
 			if( !props.button ) {
-				props.button = acf._x('Update', 'verb');
+				props.button = acf.__('Update', 'verb');
 			}
 			
 			// parent

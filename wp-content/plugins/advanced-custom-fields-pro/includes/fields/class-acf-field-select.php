@@ -22,7 +22,7 @@ class acf_field_select extends acf_field {
 		
 		// vars
 		$this->name = 'select';
-		$this->label = _x('Select', 'noun', 'acf');
+		$this->label = __('Select', 'noun', 'acf');
 		$this->category = 'choice';
 		$this->defaults = array(
 			'multiple' 		=> 0,
@@ -108,18 +108,18 @@ class acf_field_select extends acf_field {
 		// localize
 		acf_localize_data(array(
 		   	'select2L10n'	=> array(
-				'matches_1'				=> _x('One result is available, press enter to select it.',	'Select2 JS matches_1',	'acf'),
-				'matches_n'				=> _x('%d results are available, use up and down arrow keys to navigate.',	'Select2 JS matches_n',	'acf'),
-				'matches_0'				=> _x('No matches found',	'Select2 JS matches_0',	'acf'),
-				'input_too_short_1'		=> _x('Please enter 1 or more characters', 'Select2 JS input_too_short_1', 'acf' ),
-				'input_too_short_n'		=> _x('Please enter %d or more characters', 'Select2 JS input_too_short_n', 'acf' ),
-				'input_too_long_1'		=> _x('Please delete 1 character', 'Select2 JS input_too_long_1', 'acf' ),
-				'input_too_long_n'		=> _x('Please delete %d characters', 'Select2 JS input_too_long_n', 'acf' ),
-				'selection_too_long_1'	=> _x('You can only select 1 item', 'Select2 JS selection_too_long_1', 'acf' ),
-				'selection_too_long_n'	=> _x('You can only select %d items', 'Select2 JS selection_too_long_n', 'acf' ),
-				'load_more'				=> _x('Loading more results&hellip;', 'Select2 JS load_more', 'acf' ),
-				'searching'				=> _x('Searching&hellip;', 'Select2 JS searching', 'acf' ),
-				'load_fail'           	=> _x('Loading failed', 'Select2 JS load_fail', 'acf' ),
+				'matches_1'				=> __('One result is available, press enter to select it.',	'Select2 JS matches_1',	'acf'),
+				'matches_n'				=> __('%d results are available, use up and down arrow keys to navigate.',	'Select2 JS matches_n',	'acf'),
+				'matches_0'				=> __('No matches found',	'Select2 JS matches_0',	'acf'),
+				'input_too_short_1'		=> __('Please enter 1 or more characters', 'Select2 JS input_too_short_1', 'acf' ),
+				'input_too_short_n'		=> __('Please enter %d or more characters', 'Select2 JS input_too_short_n', 'acf' ),
+				'input_too_long_1'		=> __('Please delete 1 character', 'Select2 JS input_too_long_1', 'acf' ),
+				'input_too_long_n'		=> __('Please delete %d characters', 'Select2 JS input_too_long_n', 'acf' ),
+				'selection_too_long_1'	=> __('You can only select 1 item', 'Select2 JS selection_too_long_1', 'acf' ),
+				'selection_too_long_n'	=> __('You can only select %d items', 'Select2 JS selection_too_long_n', 'acf' ),
+				'load_more'				=> __('Loading more results&hellip;', 'Select2 JS load_more', 'acf' ),
+				'searching'				=> __('Searching&hellip;', 'Select2 JS searching', 'acf' ),
+				'load_fail'           	=> __('Loading failed', 'Select2 JS load_fail', 'acf' ),
 			)
 	   	));
 	}
@@ -256,7 +256,7 @@ class acf_field_select extends acf_field {
 		
 		// placeholder
 		if( empty($field['placeholder']) ) {
-			$field['placeholder'] = _x('Select', 'verb', 'acf');
+			$field['placeholder'] = __('Select', 'verb', 'acf');
 		}
 		
 		

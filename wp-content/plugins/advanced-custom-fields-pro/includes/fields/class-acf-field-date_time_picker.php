@@ -65,24 +65,24 @@ class acf_field_date_and_time_picker extends acf_field {
 		// localize
 		acf_localize_data(array(
 		   	'dateTimePickerL10n'	=> array(
-				'timeOnlyTitle'		=> _x('Choose Time',	'Date Time Picker JS timeOnlyTitle',	'acf'),
-		        'timeText'       	=> _x('Time',			'Date Time Picker JS timeText', 		'acf'),
-		        'hourText'        	=> _x('Hour',			'Date Time Picker JS hourText', 		'acf'),
-		        'minuteText'  		=> _x('Minute',			'Date Time Picker JS minuteText', 		'acf'),
-		        'secondText'		=> _x('Second',			'Date Time Picker JS secondText', 		'acf'),
-		        'millisecText'		=> _x('Millisecond',	'Date Time Picker JS millisecText', 	'acf'),
-		        'microsecText'		=> _x('Microsecond',	'Date Time Picker JS microsecText', 	'acf'),
-		        'timezoneText'		=> _x('Time Zone',		'Date Time Picker JS timezoneText', 	'acf'),
-		        'currentText'		=> _x('Now',			'Date Time Picker JS currentText', 		'acf'),
-		        'closeText'			=> _x('Done',			'Date Time Picker JS closeText', 		'acf'),
-		        'selectText'		=> _x('Select',			'Date Time Picker JS selectText', 		'acf'),
+				'timeOnlyTitle'		=> __('Choose Time',	'Date Time Picker JS timeOnlyTitle',	'acf'),
+		        'timeText'       	=> __('Time',			'Date Time Picker JS timeText', 		'acf'),
+		        'hourText'        	=> __('Hour',			'Date Time Picker JS hourText', 		'acf'),
+		        'minuteText'  		=> __('Minute',			'Date Time Picker JS minuteText', 		'acf'),
+		        'secondText'		=> __('Second',			'Date Time Picker JS secondText', 		'acf'),
+		        'millisecText'		=> __('Millisecond',	'Date Time Picker JS millisecText', 	'acf'),
+		        'microsecText'		=> __('Microsecond',	'Date Time Picker JS microsecText', 	'acf'),
+		        'timezoneText'		=> __('Time Zone',		'Date Time Picker JS timezoneText', 	'acf'),
+		        'currentText'		=> __('Now',			'Date Time Picker JS currentText', 		'acf'),
+		        'closeText'			=> __('Done',			'Date Time Picker JS closeText', 		'acf'),
+		        'selectText'		=> __('Select',			'Date Time Picker JS selectText', 		'acf'),
 		        'amNames'			=> array(
-			        					_x('AM',			'Date Time Picker JS amText', 			'acf'),
-										_x('A',				'Date Time Picker JS amTextShort', 		'acf'),
+			        					__('AM',			'Date Time Picker JS amText', 			'acf'),
+										__('A',				'Date Time Picker JS amTextShort', 		'acf'),
 									),
 		        'pmNames'			=> array(
-			        					_x('PM',			'Date Time Picker JS pmText', 			'acf'),
-										_x('P',				'Date Time Picker JS pmTextShort', 		'acf'),
+			        					__('PM',			'Date Time Picker JS pmText', 			'acf'),
+										__('P',				'Date Time Picker JS pmTextShort', 		'acf'),
 									)
 			)
 	   	));

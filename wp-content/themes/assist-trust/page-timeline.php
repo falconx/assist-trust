@@ -1,7 +1,7 @@
 <?php
 /* Template Name: Timeline */
 
-$rows = get_field('content');
+$rows = (array)get_field('content');
 
 $timeline = get_posts(array(
   'post_type' => 'timeline'

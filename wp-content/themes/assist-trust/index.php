@@ -6,7 +6,7 @@ $quote = get_field('quote');
 // ensure the required fields are populated
 $has_sidebar = $quote['text'] && $quote['author'];
 
-$rows = get_field('content');
+$rows = (array)get_field('content');
 
 ?>
 
