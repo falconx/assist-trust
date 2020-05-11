@@ -886,7 +886,8 @@ blockquote footer {
 /* case studies page (page-case-studies.php) */
 
 .case-studies {
-  margin-bottom: -4rem;
+  /* Todo: remove ul[class] selector so that this is not necessary */
+  margin-bottom: -4rem !important;
 }
 
 .case-studies h2 {
