@@ -48,3 +48,8 @@ function at_admin_init() {
   // hide default content field
   remove_post_type_support('page', 'editor');
 }
+
+add_action('admin_menu', 'post_remove');
+function post_remove() {
+  remove_menu_page('edit.php');
+} 
