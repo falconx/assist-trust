@@ -39,11 +39,6 @@
           <img src="<?php echo get_bloginfo('template_directory'); ?>/images/arrow.svg" alt="arrow pointing right" />
         </button>
       </li>
-<<<<<<< HEAD
-    <?php endfor; ?>
-  </ul>
-</div>
-=======
     </ul>
 
     <ul class="slider--nav" aria-label="slider navigation">
@@ -57,4 +52,3 @@
     </ul>
   </div>
 <?php endif; ?>
->>>>>>> c8a4dbb70cc7cfa7f93ba19ae65ec43b72e97759
