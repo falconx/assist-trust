@@ -711,7 +711,7 @@ class acf_field_taxonomy extends acf_field {
 		// vars
 		$args = array(
 			'taxonomy'     		=> $field['taxonomy'],
-			'show_option_none'	=> sprintf( _x('No %s', 'No terms', 'acf'), strtolower($taxonomy_obj->labels->name) ),
+			'show_option_none'	=> sprintf( __('No %s', 'No terms', 'acf'), strtolower($taxonomy_obj->labels->name) ),
 			'hide_empty'   		=> false,
 			'style'        		=> 'none',
 			'walker'       		=> new ACF_Taxonomy_Field_Walker( $field ),
@@ -773,7 +773,7 @@ class acf_field_taxonomy extends acf_field {
 				),
 				__("Single Value",'acf') => array(
 					'radio' => __('Radio Buttons', 'acf'),
-					'select' => _x('Select', 'noun', 'acf')
+					'select' => __('Select', 'noun', 'acf')
 				)
 			)
 		));

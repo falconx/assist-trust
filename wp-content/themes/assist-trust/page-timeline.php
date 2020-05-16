@@ -1,12 +1,24 @@
 <?php
-
-// dynamically display the sidebar if we have content to show
-$quote = get_field('quote');
-
-// ensure the required fields are populated
-$has_sidebar = $quote['text'] && $quote['author'];
+/* Template Name: Timeline */
 
 $rows = (array)get_field('content');
+
+$timeline = get_posts(array(
+  'post_type' => 'timeline'
+));
+
+function orderByYear($a, $b) {
+  $yearA = (int)get_fields($a->ID)['year'];
+  $yearB = (int)get_fields($b->ID)['year'];
+
+  if ($yearA == $yearB) {
+    return 0;
+  }
+
+  return ($yearA < $yearB) ? -1 : 1;
+}
+
+usort($timeline, 'orderByYear');
 
 ?>
 
@@ -14,12 +26,29 @@ $rows = (array)get_field('content');
 
 <?php include get_theme_file_path('/includes/slider.php'); ?>
 
-<div class="container-xl<?php echo ($has_sidebar) ? ' with-sidebar' : '' ?>">
+<div class="container-xl">
   <div class="row py-5">
-    <main class="content col-md-<?php echo ($has_sidebar) ? '8' : '12'; ?>">
-      <?php if(!is_front_page()): ?>
-        <h1><?php the_title(); ?></h1>
-      <?php endif; ?>
+    <main class="content col-md-12">
+      <h1><?php the_title(); ?></h1>
+
+      <ul class="row timeline">
+        <?php foreach($timeline as $entry): ?>
+          <li class="col col-12 col-sm-6">
+            <div class="timeline--entry">
+              <?php
+
+              $fields = get_fields($entry->ID);
+
+              ?>
+              <h2><?php echo $fields['year']; ?></h2>
+              <div class="timeline--image">
+                <img src="<?php echo $fields['image']['url']; ?>" alt="<?php echo $fields['image']['alt']; ?>" />
+              </div>
+              <p><?php echo $fields['description']; ?></p>
+            </div>
+          </li>
+        <?php endforeach; ?>
+      </ul>
 
       <?php foreach($rows as $row): ?>
         <div>
@@ -39,12 +68,6 @@ $rows = (array)get_field('content');
         </div>
       <?php endforeach; ?>
     </main>
-
-    <?php if ($has_sidebar): ?>
-      <aside class="sidebar col-md-4 mt-3 mt-md-0">
-        <?php get_sidebar(); ?>
-      </aside>
-    <?php endif; ?>
   </div>
 
   <?php if (have_rows('banners')): ?>

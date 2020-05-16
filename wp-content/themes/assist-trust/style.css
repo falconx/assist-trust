@@ -30,6 +30,54 @@ a {
   transition: color .5s;
 }
 
+h1 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* details/summary */
+
+details {
+  background-color: #e2e6f0;
+}
+
+summary {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+summary:focus {
+  outline-offset: 0;
+}
+
+summary:after {
+  content: '';
+  display: block;
+  height: 1.5em;
+  width: 1.5em;
+  margin-left: auto;
+  background-image: url('./images/plus.svg');
+  background-position: right center;
+  background-repeat: no-repeat;
+  transition: transform 0.2s ease-in-out 0s;
+}
+
+summary::-webkit-details-marker,
+summary:focus::-webkit-details-marker {
+  background: none;
+  color: transparent;
+}
+
+details[open] summary:after {
+  transform: rotate(45deg);
+}
+
+/* blockquotes */
+
 blockquote {
   quotes: "\201C""\201D""\2018""\2019";
 }
@@ -124,7 +172,6 @@ blockquote footer {
 /* button */
 
 .button {
-  all: unset; /* remove browser <button> styles */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -154,7 +201,7 @@ blockquote footer {
 }
 
 .button__secondary {
-  color: #004279;
+  color: #004279 !important;
   background-color: #fff;
 }
 
@@ -172,6 +219,18 @@ blockquote footer {
 
 .content > * + * {
   margin-top: 40px;
+}
+
+.layout-grid {
+  margin-bottom: -4rem;
+}
+
+.layout-grid .col {
+  margin-bottom: 4rem;
+}
+
+.layout-grid .col > * + * {
+  margin-top: 1rem;
 }
 
 .header {
@@ -395,8 +454,8 @@ blockquote footer {
   outline-color: #fff;
 }
 
-.page-footer .menu-item a {
-  color: #fff;
+.page-footer a {
+  color: currentColor;
 }
 
 @media (min-width: 576px) { /* small devices */
@@ -697,4 +756,153 @@ blockquote footer {
   .banner--content {
     max-width: 30ch;
   }
+}
+
+/* meet the team (page-team.php) */
+
+.team {
+  /* Todo: remove ul[class] selector so that this is not necessary */
+  margin-right: -0.75rem !important;
+  margin-left: -0.75rem !important;
+}
+
+.team--member > * + * {
+  margin-top: 1rem;
+}
+
+.team--member p {
+  margin-top: 0;
+  max-width: 40ch;
+}
+
+.team--member img {
+  max-width: 200px;
+}
+
+.team--member h2 {
+  font-weight: bold;
+}
+
+/* faqs page (page-faqs.php) */
+
+.faqs > * + * {
+  margin-top: .5rem;
+}
+
+.faqs--answer {
+  padding: 1rem;
+  padding-top: 0;
+}
+
+/* timeline page (page-timeline.php) */
+
+.timeline > * ~ * .timeline--entry {
+  padding-top: 2rem;
+}
+
+.timeline img {
+  max-width: 200px;
+}
+
+.timeline--image {
+  position: relative;
+}
+
+.timeline--image:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -3rem;
+  height: 4px;
+  width: 2rem;
+  background-color: #d70c8c;
+}
+
+.timeline--entry {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-left: 3rem;
+  max-width: 35ch;
+}
+
+.timeline--entry h2 {
+  color: #d70c8c;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.timeline > *:nth-child(odd) .timeline--entry {
+  border-left: 4px solid #d70c8c;
+}
+
+.timeline > *:nth-child(even) .timeline--entry {
+  align-items: flex-start;
+  text-align: left;
+  border-left: 4px solid #d70c8c;
+}
+
+.timeline--entry > * + * {
+  margin-top: .5rem;
+}
+
+@media (min-width: 576px) { /* small devices */
+  .timeline > * ~ * .timeline--entry {
+    padding-top: 0;
+  }
+
+  .timeline--entry {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .timeline--image:after {
+    left: auto;
+    right: -3rem;
+  }
+
+  .timeline > *:nth-child(odd) .timeline--entry {
+    right: calc(-1rem + 2px);
+    padding-right: 3rem;
+    border-left: none;
+    border-right: 4px solid #d70c8c;
+    margin-left: auto;
+    padding-left: 0;
+  }
+
+  .timeline > *:nth-child(even) .timeline--entry {
+    left: calc(-1rem + 2px);
+    margin-top: 4rem;
+    padding-top: 0;
+  }
+
+  .timeline > *:nth-child(even) .timeline--image:after {
+    right: auto;
+    left: -3rem;
+  }
+}
+
+/* case studies page (page-case-studies.php) */
+
+.case-studies {
+  /* Todo: remove ul[class] selector so that this is not necessary */
+  margin-bottom: -4rem !important;
+}
+
+.case-studies h2 {
+  color: #d70c8c;
+  font-weight: bold;
+}
+
+.case-studies h3 {
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.case-studies--entry {
+  margin-bottom: 4rem;
+}
+
+.case-studies--entry > * + * {
+  margin-top: 1rem;
 }

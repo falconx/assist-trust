@@ -184,9 +184,9 @@ class ACF_Assets {
 			'The changes you made will be lost if you navigate away from this page'	=> __('The changes you made will be lost if you navigate away from this page', 'acf'),
 			
 			// media
-			'Select.verb'			=> _x('Select', 'verb', 'acf'),
-			'Edit.verb'				=> _x('Edit', 'verb', 'acf'),
-			'Update.verb'			=> _x('Update', 'verb', 'acf'),
+			'Select.verb'			=> __('Select', 'verb', 'acf'),
+			'Edit.verb'				=> __('Edit', 'verb', 'acf'),
+			'Update.verb'			=> __('Update', 'verb', 'acf'),
 			'Uploaded to this post'	=> __('Uploaded to this post', 'acf'),
 			'Expand Details' 		=> __('Expand Details', 'acf'),
 			'Collapse Details' 		=> __('Collapse Details', 'acf'),

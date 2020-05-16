@@ -1,12 +1,11 @@
 <?php
-
-// dynamically display the sidebar if we have content to show
-$quote = get_field('quote');
-
-// ensure the required fields are populated
-$has_sidebar = $quote['text'] && $quote['author'];
+/* Template Name: FAQs */
 
 $rows = (array)get_field('content');
+
+$faqs = get_posts(array(
+  'post_type' => 'faqs'
+));
 
 ?>
 
@@ -14,12 +13,28 @@ $rows = (array)get_field('content');
 
 <?php include get_theme_file_path('/includes/slider.php'); ?>
 
-<div class="container-xl<?php echo ($has_sidebar) ? ' with-sidebar' : '' ?>">
+<div class="container-xl">
   <div class="row py-5">
-    <main class="content col-md-<?php echo ($has_sidebar) ? '8' : '12'; ?>">
-      <?php if(!is_front_page()): ?>
-        <h1><?php the_title(); ?></h1>
-      <?php endif; ?>
+    <main class="content col-md-12">
+      <h1><?php the_title(); ?></h1>
+
+      <ul class="faqs">
+        <?php foreach($faqs as $faq): ?>
+          <li>
+            <?php
+
+            $fields = get_fields($faq->ID);
+
+            ?>
+            <details>
+              <summary><?php echo $faq->post_title; ?></summary>
+              <div class="faqs--answer">
+                <?php echo $fields['answer']; ?>
+              </div>
+            </details>
+          </li>
+        <?php endforeach; ?>
+      </ul>
 
       <?php foreach($rows as $row): ?>
         <div>
@@ -39,12 +54,6 @@ $rows = (array)get_field('content');
         </div>
       <?php endforeach; ?>
     </main>
-
-    <?php if ($has_sidebar): ?>
-      <aside class="sidebar col-md-4 mt-3 mt-md-0">
-        <?php get_sidebar(); ?>
-      </aside>
-    <?php endif; ?>
   </div>
 
   <?php if (have_rows('banners')): ?>
