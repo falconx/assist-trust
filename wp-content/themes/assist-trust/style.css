@@ -172,7 +172,6 @@ blockquote footer {
 /* button */
 
 .button {
-  all: unset; /* remove browser <button> styles */
   display: inline-flex;
   align-items: center;
   justify-content: center;
