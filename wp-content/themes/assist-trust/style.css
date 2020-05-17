@@ -43,6 +43,7 @@ body.supports-details-el details {
 }
 
 summary {
+  position: relative;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -51,6 +52,7 @@ summary {
 
 body.supports-details-el summary {
   padding: 1rem;
+  padding-right: 3.5rem;
 }
 
 summary:focus {
@@ -59,6 +61,10 @@ summary:focus {
 
 body.supports-details-el summary:after {
   content: '';
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
   display: block;
   height: 1.5em;
   width: 1.5em;
