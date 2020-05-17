@@ -38,24 +38,33 @@ h1 {
 
 /* details/summary */
 
-details {
+body.supports-details-el details {
   background-color: #e2e6f0;
 }
 
 summary {
+  position: relative;
   display: flex;
   align-items: center;
   cursor: pointer;
   font-weight: bold;
+}
+
+body.supports-details-el summary {
   padding: 1rem;
+  padding-right: 3.5rem;
 }
 
 summary:focus {
   outline-offset: 0;
 }
 
-summary:after {
+body.supports-details-el summary:after {
   content: '';
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
   display: block;
   height: 1.5em;
   width: 1.5em;
@@ -66,13 +75,13 @@ summary:after {
   transition: transform 0.2s ease-in-out 0s;
 }
 
-summary::-webkit-details-marker,
-summary:focus::-webkit-details-marker {
+body.supports-details-el summary::-webkit-details-marker,
+body.supports-details-el summary:focus::-webkit-details-marker {
   background: none;
   color: transparent;
 }
 
-details[open] summary:after {
+body.supports-details-el details[open] summary:after {
   transform: rotate(45deg);
 }
 

@@ -33,6 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const mq = window.matchMedia('(min-width: 576px)');
   mq.addListener(updateMainMenu);
   updateMainMenu(mq);
+
+  if (typeof HTMLDetailsElement !== 'undefined') {
+    document.body.classList.add('supports-details-el');
+  }
 });
 
 document.addEventListener('click', function(e) {
