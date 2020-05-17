@@ -1,6 +1,11 @@
-<?php $slides = (array)get_field('slides'); ?>
+<?php
 
-<?php if (count(array_filter($slides))): ?>
+$slides = (array)get_field('slides');
+$slideCount = count(array_filter($slides));
+
+?>
+
+<?php if ($slideCount): ?>
   <svg hidden>
     <symbol id="arrow-left" viewBox="0 0 10 10">
       <path fill="currentColor" d="m9 4h-4v-2l-4 3 4 3v-2h4z"></path>
@@ -28,27 +33,29 @@
       </ul>
     </div>
 
-    <ul class="slider--controls" aria-label="slider controls">
-      <li>
-        <button type="button" id="previous" aria-label="previous">
-          <img src="<?php echo get_bloginfo('template_directory'); ?>/images/arrow.svg" alt="arrow pointing left" />
-        </button>
-      </li>
-      <li>
-        <button type="button" id="next" aria-label="next">
-          <img src="<?php echo get_bloginfo('template_directory'); ?>/images/arrow.svg" alt="arrow pointing right" />
-        </button>
-      </li>
-    </ul>
-
-    <ul class="slider--nav" aria-label="slider navigation">
-      <?php for($i = 0; $i < count($slides); $i++): ?>
-        <li class="<?php if ($i === 0): ?>active<?php endif; ?>">
-          <button type="button">
-            <span class="visually-hidden">move to slide <?php echo $i + 1; ?></span>
+    <?php if ($slideCount > 1): ?>
+      <ul class="slider--controls" aria-label="slider controls">
+        <li>
+          <button type="button" id="previous" aria-label="previous">
+            <img src="<?php echo get_bloginfo('template_directory'); ?>/images/arrow.svg" alt="arrow pointing left" />
           </button>
         </li>
-      <?php endfor; ?>
-    </ul>
+        <li>
+          <button type="button" id="next" aria-label="next">
+            <img src="<?php echo get_bloginfo('template_directory'); ?>/images/arrow.svg" alt="arrow pointing right" />
+          </button>
+        </li>
+      </ul>
+
+      <ul class="slider--nav" aria-label="slider navigation">
+        <?php for($i = 0; $i < count($slides); $i++): ?>
+          <li class="<?php if ($i === 0): ?>active<?php endif; ?>">
+            <button type="button">
+              <span class="visually-hidden">move to slide <?php echo $i + 1; ?></span>
+            </button>
+          </li>
+        <?php endfor; ?>
+      </ul>
+    <?php endif; ?>
   </div>
 <?php endif; ?>
