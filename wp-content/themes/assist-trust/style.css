@@ -374,7 +374,7 @@ blockquote footer {
   display: block;
   height: 200px;
   width: 100%;
-  object-fit: cover; /* Todo: polyfill for IE */
+  object-fit: cover;
 }
 
 .slider--controls li {
@@ -915,4 +915,48 @@ blockquote footer {
 
 .case-studies--entry > * + * {
   margin-top: 1rem;
+}
+
+/* galleries page (page-galleries.php) */
+
+.galleries h2 {
+  font-weight: bold;
+}
+
+.galleries > * + * {
+  margin-top: 4rem;
+}
+
+.galleries img {
+  height: 100px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.gallery {
+  margin: -.25rem 0;
+}
+
+.gallery a:hover img,
+.gallery a:focus img {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out 0s;
+}
+
+.gallery li {
+  margin: .25rem 0;
+}
+
+@media (min-width: 576px) { /* small devices */
+  .galleries img {
+    height: 180px;
+  }
+
+  .gallery {
+    margin: -1.5rem 0;
+  }
+  
+  .gallery li {
+    margin: 1.5rem 0;
+  }
 }
