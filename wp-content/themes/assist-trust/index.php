@@ -22,7 +22,7 @@ $rows = (array)get_field('content');
       <?php endif; ?>
 
       <?php foreach($rows as $row): ?>
-        <div>
+        <div class="stack-md">
           <?php if ($row['content']): ?>
             <?php echo $row['content']; ?>
           <?php elseif ($row['grid']): ?>

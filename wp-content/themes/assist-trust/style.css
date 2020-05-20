@@ -36,6 +36,34 @@ h1 {
   margin-bottom: 1rem;
 }
 
+h2, h3 {
+  font-weight: bold;
+}
+
+.stack-sm > * + * {
+  margin-top: .5rem;
+}
+
+.stack-md > * + * {
+  margin-top: 1rem;
+}
+
+.stack-lg > * + * {
+  margin-top: 1.5rem;
+}
+
+.stack-xl > * + * {
+  margin-top: 3rem;
+}
+
+.grid {
+  margin-bottom: -3rem;
+}
+
+.grid > * {
+  margin-bottom: 3rem;
+}
+
 /* details/summary */
 
 body.supports-details-el details {
@@ -554,7 +582,6 @@ tbody th {
 
 #menu-main h3 {
   color: #1e1e1e;
-  font-weight: bold;
 }
 
 #menu-main h3 > span {
@@ -749,7 +776,6 @@ tbody th {
 
 .social-icons__right {
   display: flex;
-  justify-content: flex-end;
 }
 
 .social-icons svg {
@@ -768,6 +794,12 @@ tbody th {
 
 .social-icons a:hover svg {
   transform: scale(1.3);
+}
+
+@media (min-width: 576px) { /* small devices */
+  .social-icons__right {
+    justify-content: flex-end;
+  }
 }
 
 /* banner */
@@ -807,21 +839,6 @@ tbody th {
   max-width: 200px;
 }
 
-.team--member h2 {
-  font-weight: bold;
-}
-
-/* faqs page (page-faqs.php) */
-
-.faqs > * + * {
-  margin-top: .5rem;
-}
-
-.faqs--answer {
-  padding: 1rem;
-  padding-top: 0;
-}
-
 /* timeline page (page-timeline.php) */
 
 .timeline > * ~ * .timeline--entry {
@@ -857,7 +874,6 @@ tbody th {
 .timeline--entry h2 {
   color: #d70c8c;
   font-size: 1.5rem;
-  font-weight: bold;
 }
 
 .timeline > *:nth-child(odd) .timeline--entry {
@@ -910,40 +926,17 @@ tbody th {
   }
 }
 
-/* case studies page (page-case-studies.php) */
-
-.case-studies {
-  /* Todo: remove ul[class] selector so that this is not necessary */
-  margin-bottom: -4rem !important;
-}
+/* case studies page (page-case-studies.php, page-life-skills.php) */
 
 .case-studies h2 {
   color: #d70c8c;
-  font-weight: bold;
 }
 
 .case-studies h3 {
-  font-weight: bold;
   margin-top: 0;
 }
 
-.case-studies--entry {
-  margin-bottom: 4rem;
-}
-
-.case-studies--entry > * + * {
-  margin-top: 1rem;
-}
-
 /* galleries page (page-galleries.php) */
-
-.galleries h2 {
-  font-weight: bold;
-}
-
-.galleries > * + * {
-  margin-top: 4rem;
-}
 
 .galleries img {
   height: 100px;

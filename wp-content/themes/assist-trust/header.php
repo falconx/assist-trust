@@ -54,7 +54,7 @@
                 Call <?php echo get_field('phone_number', 'option'); ?><br />
                 <a class="link--email link__animated" href="mailto:<?php echo get_field('email_address', 'option'); ?>"><?php echo get_field('email_address', 'option'); ?></a>
               </div>
-              <a href="<?php echo get_field('donate_url'); ?>" class="button button__primary button_small">Donate</a>
+              <a href="<?php echo get_field('donate_url'); ?>" target="_blank" class="button button__primary button_small">Donate</a>
             </div>
           </div>
         </div>

@@ -14,7 +14,7 @@ $galleries = (array)get_field('galleries');
     <main class="content col-md-12">
       <h1><?php the_title(); ?></h1>
 
-      <ul class="galleries">
+      <ul class="stack-xl">
         <?php foreach($galleries as $gallery): ?>
           <li>
             <?php
@@ -41,23 +41,25 @@ $galleries = (array)get_field('galleries');
         <?php endforeach; ?>
       </ul>
 
-      <?php foreach($rows as $row): ?>
-        <div>
-          <?php if ($row['content']): ?>
-            <?php echo $row['content']; ?>
-          <?php elseif ($row['grid']): ?>
-            <div class="layout-grid">
-              <div class="row mx-sm-n5">
-                <?php foreach($row['grid'] as $gridItem): ?>
-                  <div class="col col-12 col-sm-6 px-sm-5">
-                    <?php echo $gridItem['content']; ?>
-                  </div>
-                <?php endforeach; ?>
+      <?php if (count(array_filter($rows))): ?>
+        <?php foreach($rows as $row): ?>
+          <div>
+            <?php if ($row['content']): ?>
+              <?php echo $row['content']; ?>
+            <?php elseif ($row['grid']): ?>
+              <div class="layout-grid">
+                <div class="row mx-sm-n5">
+                  <?php foreach($row['grid'] as $gridItem): ?>
+                    <div class="col col-12 col-sm-6 px-sm-5">
+                      <?php echo $gridItem['content']; ?>
+                    </div>
+                  <?php endforeach; ?>
+                </div>
               </div>
-            </div>
-          <?php endif; ?>
-        </div>
-      <?php endforeach; ?>
+            <?php endif; ?>
+          </div>
+        <?php endforeach; ?>
+      <?php endif; ?>
     </main>
   </div>
 

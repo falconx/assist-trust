@@ -23,7 +23,7 @@
           </div>
 
           <div class="mt-3">
-            <a href="<?php echo get_field('donate_url'); ?>" class="button button__primary button_small">Donate</a>
+            <a href="<?php echo get_field('donate_url'); ?>" target="_blank" class="button button__primary button_small">Donate</a>
           </div>
 
           <div class="my-3">
