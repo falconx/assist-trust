@@ -124,6 +124,24 @@ blockquote footer {
   }
 }
 
+/* tables */
+
+th, td {
+  padding: .25rem;
+  border: 1px solid #004279;
+}
+
+thead th {
+  color: #fff;
+  background-color: #d70c8c;
+}
+
+thead tr + tr th,
+tbody th {
+  color: #d70c8c;
+  background-color: #e2e6f0;
+}
+
 /* animate underline */
 
 .link__animated,
