@@ -298,6 +298,10 @@ tbody th {
   outline-color: #fff;
 }
 
+.header button {
+  color: inherit;
+}
+
 .header .button { /* Todo: flatten selector */
   margin-right: -0.25rem; /* remaining gutter after deducting .row from .container */
 }
