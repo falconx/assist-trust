@@ -41,19 +41,19 @@ h2, h3 {
 }
 
 .stack-sm > * + * {
-  margin-top: .5rem;
+  margin-top: .5em;
 }
 
 .stack-md > * + * {
-  margin-top: 1rem;
+  margin-top: 1em;
 }
 
 .stack-lg > * + * {
-  margin-top: 1.5rem;
+  margin-top: 1.5em;
 }
 
 .stack-xl > * + * {
-  margin-top: 3rem;
+  margin-top: 3em;
 }
 
 .grid {
