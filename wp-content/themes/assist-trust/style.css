@@ -90,9 +90,8 @@ summary:focus {
 body.supports-details-el summary:after {
   content: '';
   position: absolute;
-  top: 50%;
+  top: 1rem;
   right: 1rem;
-  transform: translateY(-50%);
   display: block;
   height: 1.5em;
   width: 1.5em;
