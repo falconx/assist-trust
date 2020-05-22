@@ -14,7 +14,7 @@ $galleries = (array)get_field('galleries');
     <main class="content col-md-12">
       <h1><?php the_title(); ?></h1>
 
-      <ul class="stack-xl">
+      <ul class="stack-xl galleries">
         <?php foreach($galleries as $gallery): ?>
           <li>
             <?php
