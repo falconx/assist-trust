@@ -1,6 +1,12 @@
 <?php
 /* Template Name: FAQs */
 
+// dynamically display the sidebar if we have content to show
+$quote = get_field('quote');
+
+// ensure the required fields are populated
+$has_sidebar = $quote['text'] && $quote['author'];
+
 $rows = (array)get_field('content');
 
 $faqs = get_posts(array(
@@ -14,9 +20,9 @@ $faqs = get_posts(array(
 <main>
   <?php include get_theme_file_path('/includes/slider.php'); ?>
 
-  <div class="container-xl">
+  <div class="container-xl<?php echo ($has_sidebar) ? ' with-sidebar' : '' ?>">
     <div class="row py-5">
-      <div class="content col-md-12">
+      <div class="content col-md-<?php echo ($has_sidebar) ? '8' : '12'; ?>">
         <h1><?php the_title(); ?></h1>
 
         <ul class="stack-sm">
@@ -57,6 +63,14 @@ $faqs = get_posts(array(
             <?php endforeach; ?>
           <?php endif; ?>
       </div>
+
+      <?php if ($has_sidebar): ?>
+        <section class="sidebar col-md-4 mt-3 mt-md-0" aria-labelledby="quote">
+          <h2 id="quote" class="visually-hidden">Quote</h2>
+
+          <?php get_sidebar(); ?>
+        </section>
+      <?php endif; ?>
     </div>
 
     <?php if (have_rows('banners')): ?>
