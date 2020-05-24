@@ -26,8 +26,13 @@ body {
 }
 
 a {
+  color: inherit;
   text-decoration: none;
-  transition: color .5s;
+  transition: color .2s;
+}
+
+p {
+  max-width: 80ch;
 }
 
 h1 {
@@ -62,6 +67,12 @@ h2, h3 {
 
 .grid > * {
   margin-bottom: 3rem;
+}
+
+.heading--with-divide {
+  color: #d70c8c;
+  border-top: 1px solid;
+  text-transform: uppercase;
 }
 
 /* details/summary */
@@ -234,7 +245,7 @@ tbody th {
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color .5s;
+  transition: background-color .2s;
 }
 
 /* some duplication with *:focus due to specificity conflict with .button */
@@ -961,4 +972,21 @@ tbody th {
   .gallery li {
     margin: 1.5rem 0;
   }
+}
+
+/* job vacancies page (page-job-vacancies.php) */
+
+.jobs a {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.jobs a:hover {
+  color: #d70c8c;
+}
+
+/* diary-dates page (page-diary-dates.php) */
+
+.diary-dates--dates {
+  font-weight: bold;
 }

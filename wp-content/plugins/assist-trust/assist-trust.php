@@ -52,4 +52,4 @@ function at_admin_init() {
 add_action('admin_menu', 'post_remove');
 function post_remove() {
   remove_menu_page('edit.php');
-} 
+}

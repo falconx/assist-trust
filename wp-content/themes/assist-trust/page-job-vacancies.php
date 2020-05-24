@@ -1,4 +1,5 @@
 <?php
+/* Template Name: Job Vacancies */
 
 // dynamically display the sidebar if we have content to show
 $quote = get_field('quote');
@@ -7,6 +8,10 @@ $quote = get_field('quote');
 $has_sidebar = $quote['text'] && $quote['author'];
 
 $rows = (array)get_field('content');
+
+$jobs = get_posts(array(
+  'post_type' => 'jobs'
+));
 
 ?>
 
@@ -17,27 +22,42 @@ $rows = (array)get_field('content');
 <div class="container-xl<?php echo ($has_sidebar) ? ' with-sidebar' : '' ?>">
   <div class="row py-5">
     <main class="content col-md-<?php echo ($has_sidebar) ? '8' : '12'; ?>">
-      <?php if(!is_front_page()): ?>
-        <h1><?php the_title(); ?></h1>
-      <?php endif; ?>
+      <h1><?php the_title(); ?></h1>
 
-      <?php if (count(array_filter($rows))): ?>
-        <?php foreach($rows as $row): ?>
-          <div class="stack-md">
-            <?php if ($row['content']): ?>
-              <?php echo $row['content']; ?>
-            <?php elseif ($row['grid']): ?>
-              <div class="row mx-sm-n5 grid">
-                <?php foreach($row['grid'] as $gridItem): ?>
-                  <div class="col col-12 col-sm-6 px-sm-5">
-                    <?php echo $gridItem['content']; ?>
-                  </div>
-                <?php endforeach; ?>
-              </div>
-            <?php endif; ?>
-          </div>
+      <ul class="stack-lg jobs">
+        <?php foreach($jobs as $entry): ?>
+          <li class="stack-md">
+            <?php
+
+            $fields = get_fields($entry->ID);
+
+            ?>
+            <h2 class="heading--with-divide">
+              <?php echo $entry->post_title; ?>
+            </h2>
+            <?php echo $fields['description']; ?>
+            <div>
+              <a href="">Apply for this job</a>
+            </div>
+          </li>
         <?php endforeach; ?>
-      <?php endif; ?>
+      </ul>
+
+      <?php foreach($rows as $row): ?>
+        <div class="stack-md">
+          <?php if ($row['content']): ?>
+            <?php echo $row['content']; ?>
+          <?php elseif ($row['grid']): ?>
+            <div class="row mx-sm-n5 grid">
+              <?php foreach($row['grid'] as $gridItem): ?>
+                <div class="col col-12 col-sm-6 px-sm-5">
+                  <?php echo $gridItem['content']; ?>
+                </div>
+              <?php endforeach; ?>
+            </div>
+          <?php endif; ?>
+        </div>
+      <?php endforeach; ?>
     </main>
 
     <?php if ($has_sidebar): ?>
