@@ -26,14 +26,53 @@ body {
 }
 
 a {
+  color: inherit;
   text-decoration: none;
-  transition: color .5s;
+  transition: color .2s;
+}
+
+p {
+  max-width: 80ch;
 }
 
 h1 {
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 1rem;
+}
+
+h2, h3 {
+  font-weight: bold;
+}
+
+.stack-sm > * + * {
+  margin-top: .5em;
+}
+
+.stack-md > * + * {
+  margin-top: 1em;
+}
+
+.stack-lg > * + * {
+  margin-top: 1.5em;
+}
+
+.stack-xl > * + * {
+  margin-top: 3em;
+}
+
+.grid {
+  margin-bottom: -3rem;
+}
+
+.grid > * {
+  margin-bottom: 3rem;
+}
+
+.heading--with-divide {
+  color: #d70c8c;
+  border-top: 1px solid;
+  text-transform: uppercase;
 }
 
 /* details/summary */
@@ -62,9 +101,8 @@ summary:focus {
 body.supports-details-el summary:after {
   content: '';
   position: absolute;
-  top: 50%;
+  top: 1rem;
   right: 1rem;
-  transform: translateY(-50%);
   display: block;
   height: 1.5em;
   width: 1.5em;
@@ -122,6 +160,24 @@ blockquote footer {
   blockquote p {
     font-size: 1.25rem;
   }
+}
+
+/* tables */
+
+th, td {
+  padding: .25rem;
+  border: 1px solid #004279;
+}
+
+thead th {
+  color: #fff;
+  background-color: #d70c8c;
+}
+
+thead tr + tr th,
+tbody th {
+  color: #d70c8c;
+  background-color: #e2e6f0;
 }
 
 /* animate underline */
@@ -189,7 +245,7 @@ blockquote footer {
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color .5s;
+  transition: background-color .2s;
 }
 
 /* some duplication with *:focus due to specificity conflict with .button */
@@ -230,18 +286,6 @@ blockquote footer {
   margin-top: 40px;
 }
 
-.layout-grid {
-  margin-bottom: -4rem;
-}
-
-.layout-grid .col {
-  margin-bottom: 4rem;
-}
-
-.layout-grid .col > * + * {
-  margin-top: 1rem;
-}
-
 .header {
   min-height: 44px;
   color: #fff;
@@ -251,6 +295,10 @@ blockquote footer {
 .header *:focus {
   outline-offset: 0;
   outline-color: #fff;
+}
+
+.header button {
+  color: inherit;
 }
 
 .header .button { /* Todo: flatten selector */
@@ -374,7 +422,7 @@ blockquote footer {
   display: block;
   height: 200px;
   width: 100%;
-  object-fit: cover; /* Todo: polyfill for IE */
+  object-fit: cover;
 }
 
 .slider--controls li {
@@ -536,7 +584,6 @@ blockquote footer {
 
 #menu-main h3 {
   color: #1e1e1e;
-  font-weight: bold;
 }
 
 #menu-main h3 > span {
@@ -731,7 +778,6 @@ blockquote footer {
 
 .social-icons__right {
   display: flex;
-  justify-content: flex-end;
 }
 
 .social-icons svg {
@@ -750,6 +796,12 @@ blockquote footer {
 
 .social-icons a:hover svg {
   transform: scale(1.3);
+}
+
+@media (min-width: 576px) { /* small devices */
+  .social-icons__right {
+    justify-content: flex-end;
+  }
 }
 
 /* banner */
@@ -789,21 +841,6 @@ blockquote footer {
   max-width: 200px;
 }
 
-.team--member h2 {
-  font-weight: bold;
-}
-
-/* faqs page (page-faqs.php) */
-
-.faqs > * + * {
-  margin-top: .5rem;
-}
-
-.faqs--answer {
-  padding: 1rem;
-  padding-top: 0;
-}
-
 /* timeline page (page-timeline.php) */
 
 .timeline > * ~ * .timeline--entry {
@@ -839,7 +876,6 @@ blockquote footer {
 .timeline--entry h2 {
   color: #d70c8c;
   font-size: 1.5rem;
-  font-weight: bold;
 }
 
 .timeline > *:nth-child(odd) .timeline--entry {
@@ -892,27 +928,65 @@ blockquote footer {
   }
 }
 
-/* case studies page (page-case-studies.php) */
-
-.case-studies {
-  /* Todo: remove ul[class] selector so that this is not necessary */
-  margin-bottom: -4rem !important;
-}
+/* case studies page (page-case-studies.php, page-life-skills.php) */
 
 .case-studies h2 {
   color: #d70c8c;
-  font-weight: bold;
 }
 
 .case-studies h3 {
-  font-weight: bold;
   margin-top: 0;
 }
 
-.case-studies--entry {
-  margin-bottom: 4rem;
+/* galleries page (page-galleries.php) */
+
+.galleries img {
+  height: 100px;
+  width: 100%;
+  object-fit: cover;
 }
 
-.case-studies--entry > * + * {
-  margin-top: 1rem;
+.gallery {
+  margin: -.25rem 0;
+}
+
+.gallery a:hover img,
+.gallery a:focus img {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out 0s;
+}
+
+.gallery li {
+  margin: .25rem 0;
+}
+
+@media (min-width: 576px) { /* small devices */
+  .galleries img {
+    height: 180px;
+  }
+
+  .gallery {
+    margin: -1.5rem 0;
+  }
+  
+  .gallery li {
+    margin: 1.5rem 0;
+  }
+}
+
+/* job vacancies page (page-job-vacancies.php) */
+
+.jobs a {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.jobs a:hover {
+  color: #d70c8c;
+}
+
+/* diary-dates page (page-diary-dates.php) */
+
+.diary-dates--dates {
+  font-weight: bold;
 }

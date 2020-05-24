@@ -238,6 +238,86 @@ class AssistTrustSettings {
             'append' => '',
             'maxlength' => '',
           ),
+          array(
+            'key' => 'field_5ec97a1ff5bd6',
+            'label' => 'Training Days (annual closures)',
+            'name' => 'training_days_dates',
+            'type' => 'repeater',
+            'instructions' => 'Displayed on the Diary Dates page',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+              'width' => '',
+              'class' => '',
+              'id' => '',
+            ),
+            'collapsed' => '',
+            'min' => 0,
+            'max' => 0,
+            'layout' => 'table',
+            'button_label' => 'Add Date',
+            'sub_fields' => array(
+              array(
+                'key' => 'field_5ec97a2bf5bd7',
+                'label' => 'Date',
+                'name' => 'date',
+                'type' => 'text',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                  'width' => '',
+                  'class' => '',
+                  'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+              ),
+            ),
+          ),
+          array(
+            'key' => 'field_5ec97aa5f5bd8',
+            'label' => 'Christmas (annual closures)',
+            'name' => 'christmas_dates',
+            'type' => 'repeater',
+            'instructions' => 'Displayed on the Diary Dates page',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+              'width' => '',
+              'class' => '',
+              'id' => '',
+            ),
+            'collapsed' => '',
+            'min' => 0,
+            'max' => 0,
+            'layout' => 'table',
+            'button_label' => 'Add Date',
+            'sub_fields' => array(
+              array(
+                'key' => 'field_5ec97ad9f5bd9',
+                'label' => 'Date',
+                'name' => 'date',
+                'type' => 'text',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                  'width' => '',
+                  'class' => '',
+                  'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+              ),
+            ),
+          ),
         ),
         'location' => array(
           array(
@@ -255,9 +335,10 @@ class AssistTrustSettings {
         'instruction_placement' => 'label',
         'hide_on_screen' => '',
         'active' => false,
-        'description' => '',
+        'description' => 'Only used for the purpose of exporting to the Assist Trust Settings plugin',
       ));
-    endif;
+      
+      endif;
   }
 }
 

@@ -21,23 +21,23 @@ $rows = (array)get_field('content');
         <h1><?php the_title(); ?></h1>
       <?php endif; ?>
 
-      <?php foreach($rows as $row): ?>
-        <div>
-          <?php if ($row['content']): ?>
-            <?php echo $row['content']; ?>
-          <?php elseif ($row['grid']): ?>
-            <div class="layout-grid">
-              <div class="row mx-sm-n5">
+      <?php if (count(array_filter($rows))): ?>
+        <?php foreach($rows as $row): ?>
+          <div class="stack-md">
+            <?php if ($row['content']): ?>
+              <?php echo $row['content']; ?>
+            <?php elseif ($row['grid']): ?>
+              <div class="row mx-sm-n5 grid">
                 <?php foreach($row['grid'] as $gridItem): ?>
                   <div class="col col-12 col-sm-6 px-sm-5">
                     <?php echo $gridItem['content']; ?>
                   </div>
                 <?php endforeach; ?>
               </div>
-            </div>
-          <?php endif; ?>
-        </div>
-      <?php endforeach; ?>
+            <?php endif; ?>
+          </div>
+        <?php endforeach; ?>
+      <?php endif; ?>
     </main>
 
     <?php if ($has_sidebar): ?>
