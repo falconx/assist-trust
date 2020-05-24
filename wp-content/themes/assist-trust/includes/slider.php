@@ -16,7 +16,7 @@ $slideCount = count(array_filter($slides));
   </svg>
 
   <div class="slider--wrapper">
-    <div role="region" class="slider" aria-labelledby="slider-heading" aria-describedby="instructions">
+    <div role="region" class="slider" aria-labelledby="slider-heading">
       <h2 id="slider-heading" class="visually-hidden">Slider</h2>
 
       <ul>
