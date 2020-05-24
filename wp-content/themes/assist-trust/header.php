@@ -12,13 +12,9 @@
   <link href="<?php echo get_bloginfo('template_directory'); ?>/bootstrap-grid.css" rel="stylesheet" />
   <link href="<?php echo get_bloginfo('template_directory'); ?>/bootstrap-utilities.css" rel="stylesheet" />
   <link href="<?php echo get_bloginfo('template_directory'); ?>/style.css" rel="stylesheet" />
-  <link href="<?php echo get_bloginfo('template_directory'); ?>/simpleLightbox.min.css" rel="stylesheet" />
+  <link href="<?php echo get_bloginfo('template_directory'); ?>/simple-lightbox.css" rel="stylesheet" />
 
-  <script src="<?php echo get_bloginfo('template_directory'); ?>/js/closest.polyfill.js"></script>
-  <script src="<?php echo get_bloginfo('template_directory'); ?>/js/main.js"></script>
-  <script src="<?php echo get_bloginfo('template_directory'); ?>/js/slider.js"></script>
-  <script src="<?php echo get_bloginfo('template_directory'); ?>/js/simpleLightbox.min.js"></script>
-  <script src="<?php echo get_bloginfo('template_directory'); ?>/js/gallery.js"></script>
+  <script src="<?php echo get_bloginfo('template_directory'); ?>/js/dist/bundle.js"></script>
 
   <?php wp_head(); ?>
 </head>
