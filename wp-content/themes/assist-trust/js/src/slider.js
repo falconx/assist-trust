@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const ACTIVE_NAV_CLASS = 'active';
 
-  const activeIndex = 0;
+  let activeIndex = 0;
 
   // apply CSS object-fit equivalent for IE + Edge
   Array.prototype.forEach.call(images, objectFit);
