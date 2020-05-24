@@ -17,7 +17,7 @@
       <div class="col col-12 col-sm-8 mt-3 mt-sm-0 order-first order-sm-last">
         <div class="page-footer--right">
           <div>
-            <a href="" class="button button__secondary link__animated-inner">
+            <a href="" class="button button__secondary">
               <span>Click here to join our mailing list</span>
             </a>
           </div>
@@ -28,7 +28,7 @@
 
           <div class="my-3">
             <div>Call <?php echo get_field('phone_number', 'option'); ?></div>
-            <a href="mailto:<?php echo get_field('email_address', 'option'); ?>" class="link__animated"><?php echo get_field('email_address', 'option'); ?></a>
+            <a href="mailto:<?php echo get_field('email_address', 'option'); ?>"><?php echo get_field('email_address', 'option'); ?></a>
           </div>
 
           <div class="social-icons social-icons__right mt-auto">

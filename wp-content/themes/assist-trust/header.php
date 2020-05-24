@@ -8,11 +8,11 @@
 
   <title>Assist Trust</title>
 
-  <link href="<?php echo get_bloginfo('template_directory'); ?>/reset.css" rel="stylesheet" />
-  <link href="<?php echo get_bloginfo('template_directory'); ?>/bootstrap-grid.css" rel="stylesheet" />
-  <link href="<?php echo get_bloginfo('template_directory'); ?>/bootstrap-utilities.css" rel="stylesheet" />
-  <link href="<?php echo get_bloginfo('template_directory'); ?>/style.css" rel="stylesheet" />
-  <link href="<?php echo get_bloginfo('template_directory'); ?>/simple-lightbox.css" rel="stylesheet" />
+  <link href="<?php echo get_bloginfo('template_directory'); ?>/css/reset.css" rel="stylesheet" />
+  <link href="<?php echo get_bloginfo('template_directory'); ?>/css/bootstrap-grid.css" rel="stylesheet" />
+  <link href="<?php echo get_bloginfo('template_directory'); ?>/css/bootstrap-utilities.css" rel="stylesheet" />
+  <link href="<?php echo get_bloginfo('template_directory'); ?>/css/style.css" rel="stylesheet" />
+  <link href="<?php echo get_bloginfo('template_directory'); ?>/css/simple-lightbox.css" rel="stylesheet" />
 
   <script src="<?php echo get_bloginfo('template_directory'); ?>/js/dist/bundle.js"></script>
 
@@ -48,7 +48,7 @@
             <div>
               <div class="mb-2">
                 Call <?php echo get_field('phone_number', 'option'); ?><br />
-                <a class="link--email link__animated" href="mailto:<?php echo get_field('email_address', 'option'); ?>"><?php echo get_field('email_address', 'option'); ?></a>
+                <a class="link--email" href="mailto:<?php echo get_field('email_address', 'option'); ?>"><?php echo get_field('email_address', 'option'); ?></a>
               </div>
               <a href="<?php echo get_field('donate_url'); ?>" target="_blank" class="button button__primary button_small">Donate</a>
             </div>

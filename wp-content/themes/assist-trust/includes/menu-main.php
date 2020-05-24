@@ -11,7 +11,7 @@
         <?php foreach ($menuItems as $item): ?>
           <li class="menu-item">
             <?php if (!empty($item['children'])): ?>
-              <button type="button" aria-expanded="false" class="link__animated-inner">
+              <button type="button" aria-expanded="false">
                 <span><?php echo $item['title']; ?></span>
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -39,7 +39,7 @@
                               <span><?php echo $group['title']; ?></span>
                             </h3>
 
-                            <button type="button" aria-expanded="false" class="d-sm-none link__animated-inner">
+                            <button type="button" aria-expanded="false" class="d-sm-none">
                               <span><?php echo $group['title']; ?></span>
 
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -50,7 +50,7 @@
                             <ul class="sub-menu sub-menu__2">
                               <?php foreach($group['children'] as $child): ?>
                                 <li>
-                                  <a href="<?php echo $child['url']; ?>" title="<?php echo $child['title']; ?>" class="link__animated-inner">
+                                  <a href="<?php echo $child['url']; ?>" title="<?php echo $child['title']; ?>">
                                     <span><?php echo $child['title']; ?></span>
                                   </a>
                                 </li>
@@ -60,7 +60,7 @@
                         <?php else: ?>
                           <?php foreach($group as $child): ?>
                             <li class="ungrouped" style="grid-row: <?php echo $gridRowIndex; ?>; -ms-grid-row: <?php echo $gridRowIndex++; ?>">
-                              <a href="<?php echo $child['url']; ?>" title="<?php echo $child['title']; ?>" class="link__animated-inner">
+                              <a href="<?php echo $child['url']; ?>" title="<?php echo $child['title']; ?>">
                                 <span><?php echo $child['title']; ?></span>
                               </a>
                             </li>
@@ -75,7 +75,7 @@
                   <ul class="sub-menu--list">
                     <?php foreach($item['children'] as $child): ?>
                       <li>
-                        <a href="<?php echo $child['url']; ?>" title="<?php echo $child['title']; ?>" class="link__animated-inner">
+                        <a href="<?php echo $child['url']; ?>" title="<?php echo $child['title']; ?>">
                           <span><?php echo $child['title']; ?></span>
                         </a>
                       </li>
@@ -84,7 +84,7 @@
                 </div>
               <?php endif; ?>
             <?php else: ?>
-              <a href="<?php echo $item['url']; ?>" title="<?php echo $item['title']; ?>" class="link__animated-inner">
+              <a href="<?php echo $item['url']; ?>" title="<?php echo $item['title']; ?>">
                 <span><?php echo $item['title']; ?></span>
               </a>
             <?php endif; ?>
