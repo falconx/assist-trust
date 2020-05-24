@@ -8,11 +8,11 @@
 
   <title>Assist Trust</title>
 
-  <link href="<?php echo get_bloginfo('template_directory'); ?>/reset.css" rel="stylesheet" />
-  <link href="<?php echo get_bloginfo('template_directory'); ?>/bootstrap-grid.css" rel="stylesheet" />
-  <link href="<?php echo get_bloginfo('template_directory'); ?>/bootstrap-utilities.css" rel="stylesheet" />
-  <link href="<?php echo get_bloginfo('template_directory'); ?>/style.css" rel="stylesheet" />
-  <link href="<?php echo get_bloginfo('template_directory'); ?>/simple-lightbox.css" rel="stylesheet" />
+  <link href="<?php echo get_bloginfo('template_directory'); ?>/css/reset.css" rel="stylesheet" />
+  <link href="<?php echo get_bloginfo('template_directory'); ?>/css/bootstrap-grid.css" rel="stylesheet" />
+  <link href="<?php echo get_bloginfo('template_directory'); ?>/css/bootstrap-utilities.css" rel="stylesheet" />
+  <link href="<?php echo get_bloginfo('template_directory'); ?>/css/style.css" rel="stylesheet" />
+  <link href="<?php echo get_bloginfo('template_directory'); ?>/css/simple-lightbox.css" rel="stylesheet" />
 
   <script src="<?php echo get_bloginfo('template_directory'); ?>/js/dist/bundle.js"></script>
 
