@@ -110,7 +110,7 @@ body.supports-details-el summary:after {
   height: 1.5em;
   width: 1.5em;
   margin-left: auto;
-  background-image: url('./images/plus.svg');
+  background-image: url('../images/plus.svg');
   background-position: right center;
   background-repeat: no-repeat;
   transition: transform 0.2s ease-in-out 0s;

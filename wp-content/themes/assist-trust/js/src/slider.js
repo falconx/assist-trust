@@ -2,8 +2,9 @@ import objectFit from './object-fit-shim';
 
 document.addEventListener('DOMContentLoaded', () => {
   const slider = document.querySelector('.slider');
+  const images = slider.querySelectorAll('img');
 
-  if (!slider) {
+  if (!slider || images.length <= 1) {
     return;
   }
 
@@ -11,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const previous = document.getElementById('previous');
   const next = document.getElementById('next');
   const navItems = slider.closest('.slider--wrapper').querySelectorAll('.slider--nav li');
-  const images = slider.querySelectorAll('img');
 
   const ACTIVE_NAV_CLASS = 'active';
 
