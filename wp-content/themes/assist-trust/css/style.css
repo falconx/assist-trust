@@ -204,6 +204,19 @@ tbody th {
   margin-right: -50vw;
 }
 
+.table-overflow {
+  overflow-x: auto;
+  margin-left: -1rem; /* gutter */
+  margin-right: -1rem; /* gutter */
+}
+
+@media (min-width: 576px) { /* small devices */
+  .table-overflow {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 /* button */
 
 .button {
