@@ -2,6 +2,7 @@
 /* Template Name: Galleries */
 
 $galleries = (array)get_field('galleries');
+$rows = (array)get_field('content');
 
 ?>
 

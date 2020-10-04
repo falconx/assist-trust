@@ -61,15 +61,18 @@ function wp_get_main_menu() {
       '-1' => array()
     );
 
-    foreach ((array)$item['children'] as $subItem) {
-      $id = $subItem['ID'];
-
-      
-      if (count((array)$subItem['children'])) {
-        $item['showMegaMenu'] = true;
-        $group[$id] = $subItem;
-      } else {
-        $group['-1'][$id] = $subItem;
+    if (isset($item['children'])) {
+      foreach ((array)$item['children'] as $subItem) {
+        $id = $subItem['ID'];
+        
+        if (isset($subItem['children'])) {
+          if (count((array)$subItem['children'])) {
+            $item['showMegaMenu'] = true;
+            $group[$id] = $subItem;
+          } else {
+            $group['-1'][$id] = $subItem;
+          }
+        }
       }
     }
 
