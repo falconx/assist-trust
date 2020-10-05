@@ -6,9 +6,15 @@
 
   // Note that this template only supports rendering two levels deep
 
+  $slides = (array)get_field('slides');
+  $slideCount = count(array_filter($slides));
+
+  // only apply a shadow if there is slider on the page
+  $withShadow = !$slideCount;
+
   ?>
 
-  <div class="menu-main-container">
+  <div class="menu-main-container<?php if ($withShadow): ?> with-shadow<?php endif; ?>">
     <div id="menu-main" class="menu-main">
       <ul class="menu-list menu-list__1">
         <?php foreach ($menuItems as $item): ?>
