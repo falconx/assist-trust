@@ -31,7 +31,7 @@ $rows = (array)get_field('content');
           <?php if (count(array_filter($rows))): ?>
             <?php foreach($rows as $row): ?>
               <div class="stack-md">
-                <?php if ($row['content']): ?>
+                <?php if (isset($row['content'])): ?>
                   <?php echo $row['content']; ?>
                 <?php elseif ($row['grid']): ?>
                   <div class="row mx-sm-n5 grid">
