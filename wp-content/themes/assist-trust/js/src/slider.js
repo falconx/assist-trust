@@ -2,9 +2,14 @@ import objectFit from './object-fit-shim';
 
 document.addEventListener('DOMContentLoaded', () => {
   const slider = document.querySelector('.slider');
+
+  if (!slider) {
+    return;
+  }
+
   const images = slider.querySelectorAll('img');
 
-  if (!slider || images.length <= 1) {
+  if (images.length <= 1) {
     return;
   }
 

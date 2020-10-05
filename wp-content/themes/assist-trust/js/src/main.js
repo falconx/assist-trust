@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ensure that a previously expanded menu doesn't appear behind another
   // 
   // this way only one top level menu item can be active at a time
-  const menuLinks = nav.querySelectorAll('.menu-link__1');
+  const menuLinks = document.querySelectorAll('.menu-link__1');
   const events = ['click', 'mouseover'];
 
   const collapseTopLevelLinks = e => {
