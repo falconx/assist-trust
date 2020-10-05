@@ -37,7 +37,7 @@
               <?php echo get_field('slogan', 'option'); ?>
             </div>
 
-            <div class="social-icons d-none d-sm-block">
+            <div class="social-icons d-none d-md-block">
               <?php include get_theme_file_path('/includes/social-icons.php'); ?>
             </div>
           </div>
