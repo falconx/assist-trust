@@ -1,7 +1,7 @@
 <?php $quote = get_field('quote'); ?>
 
 <?php if ($quote['image']): ?>
-  <img src="<?php echo $quote['image']; ?>" alt="" />
+  <?php echo wp_get_attachment_image($quote['image']['ID'], 'medium'); ?>
 <?php endif; ?>
 
 <blockquote>

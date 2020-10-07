@@ -24,7 +24,8 @@ $slideCount = count(array_filter($slides));
           <?php foreach($slides as $slide): ?>
             <li>
               <figure>
-                <img src="<?php echo $slide['image']['url']; ?>" alt="<?php echo $slide['image']['alt']; ?>" />
+                <?php echo wp_get_attachment_image($slide['image']['ID'], 'medium'); ?>
+
                 <?php if ($slide['image']['alt']): ?>
                   <figcaption><?php echo $slide['image']['alt']; ?></figcaption>
                 <?php endif; ?>

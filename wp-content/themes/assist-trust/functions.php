@@ -7,12 +7,12 @@
  *
  * @link https://stackoverflow.com/a/28429487/2078474
  */
-function buildTree(array &$elements, $parentId = 0) {
+function build_tree(array &$elements, $parentId = 0) {
   $branch = array();
 
   foreach ($elements as &$element) {
     if ($element->menu_item_parent == $parentId) {
-      $children = buildTree($elements, $element->ID);
+      $children = build_tree($elements, $element->ID);
 
       if ($children) {
         $branch[$element->ID]['children'] = $children;
@@ -32,13 +32,21 @@ function buildTree(array &$elements, $parentId = 0) {
 /**
  * Transform a navigational menu to it's tree structure
  *
- * @uses  buildTree()
+ * @uses build_tree()
  *
- * @param  String     $menu
+ * @param String $menu
  * @return Array|null $tree 
  */
 function wp_get_menu_array($menu) {
   $items = wp_get_nav_menu_items($menu);
 
-  return $items ? buildTree($items, 0) : null;
+  return $items ? build_tree($items, 0) : null;
+}
+
+add_image_size('banner-small', 300, 200, true);
+add_image_size('banner-medium', 600, 400, true);
+
+add_filter('max_srcset_image_width', 'max_srcset_image_width', 10 , 2);
+function max_srcset_image_width() {
+	return 1920; // max width in pixels
 }

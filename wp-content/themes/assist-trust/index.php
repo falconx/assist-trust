@@ -12,7 +12,6 @@ $rows = (array)get_field('content');
 
 <?php get_header(); ?>
 
-
 <main>
   <?php include get_theme_file_path('/includes/slider.php'); ?>
 
@@ -65,7 +64,7 @@ $rows = (array)get_field('content');
               <?php
               
               $banner = get_sub_field('banner');
-              
+
               ?>
               <div class="row mx-sm-n6 mx-lg-n4">
                 <div class="col-sm-6 px-lg-4">
@@ -83,7 +82,7 @@ $rows = (array)get_field('content');
                 </div>
 
                 <div class="col-sm-6 px-lg-4 order-first<?php if ($banner['image_position'] == 'right'): ?> order-sm-last<?php endif; ?>">
-                  <img src="<?php echo $banner['image']; ?>" alt="" />
+                  <?php echo wp_get_attachment_image($banner['image'], 'medium'); ?>
                 </div>
               </div>
             </div>
