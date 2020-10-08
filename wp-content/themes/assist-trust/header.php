@@ -25,13 +25,13 @@
   <div class="header pt-sm-4">
     <div class="container-xl">
       <div class="row">
-        <div class="col-3 align-self-center">
+        <div class="col-3 col-sm-5 col-md-3 align-self-center align-self-sm-start">
           <a href="/" class="d-block">
             <img src="<?php echo get_bloginfo('template_directory'); ?>/images/logo.svg" alt="Assist Trust" class="logo" />
           </a>
         </div>
 
-        <div class="col align-self-center">
+        <div class="col align-self-center align-self-sm-start">
           <div class="slogan-social-container">
             <div class="slogan">
               <?php echo get_field('slogan', 'option'); ?>
@@ -43,7 +43,7 @@
           </div>
         </div>
 
-        <div class="col-auto align-self-center d-none d-sm-block">
+        <div class="col-auto d-none d-sm-block">
           <div class="header--contact-info">
             <div>
               Call <?php echo get_field('phone_number', 'option'); ?><br />

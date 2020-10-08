@@ -313,8 +313,7 @@ tbody th {
 .logo {
   height: 44px;
   max-width: 220px;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding: .5rem 0;
 
   /* IE fix */
   max-height: 96px; /* intrinsic image height */
@@ -322,7 +321,6 @@ tbody th {
 
 .slogan-social-container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 
@@ -366,11 +364,13 @@ tbody th {
 
   .logo {
     height: auto;
+    padding: 0;
   }
 
   .slogan {
     font-size: 1.4rem;
-    line-height: 1.2;
+    line-height: 1.18; /* roughly align bottom of slogan with the bottom of the logo */
+    margin-top: -.2em; /* vertically align slogan with logo and social icons */
   }
 }
 
@@ -752,7 +752,7 @@ tbody th {
 }
 
 .social-icons--list > * + * {
-  margin-left: 1rem;
+  margin-left: .75rem;
 }
 
 .social-icons__right {
