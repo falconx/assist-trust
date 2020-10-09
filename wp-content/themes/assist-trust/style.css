@@ -973,3 +973,13 @@ tbody th {
 .diary-dates--dates {
   font-weight: bold;
 }
+
+/* wysiwyg */
+
+.content ul {
+  list-style: circle inside;
+}
+
+.content ol {
+  list-style: decimal inside;
+}
