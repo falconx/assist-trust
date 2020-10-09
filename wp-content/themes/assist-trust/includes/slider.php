@@ -1,7 +1,13 @@
 <?php
 
 $slides = (array)get_field('slides');
-$slideCount = count(array_filter($slides));
+
+// filter out slide entries which have no images attached
+$slides = array_filter($slides, function($slide) {
+  return $slide['image']['ID'];
+});
+
+$slideCount = count($slides);
 
 ?>
 
