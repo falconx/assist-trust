@@ -945,7 +945,7 @@ tbody th {
 
 @media (min-width: 576px) { /* small devices */
   .galleries img {
-    height: 180px;
+    height: 200px;
   }
 
   .gallery {

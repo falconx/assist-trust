@@ -24,7 +24,7 @@
             </div>
 
             <div class="col-sm-6 px-lg-4 order-first<?php if ($banner['image_position'] == 'right'): ?> order-sm-last<?php endif; ?>">
-              <?php echo wp_get_attachment_image($banner['image']['ID'], 'banner-medium'); ?>
+              <?php echo wp_get_attachment_image($banner['image']['ID'], 'banner'); ?>
             </div>
           </div>
         </div>

@@ -43,10 +43,10 @@ function wp_get_menu_array($menu) {
   return $items ? build_tree($items, 0) : null;
 }
 
-add_image_size('banner-small', 300, 200, true);
-add_image_size('banner-medium', 600, 400, true);
+add_image_size('banner', 600, 400, true);
+add_image_size('slider', 1140, 400, true);
 
 add_filter('max_srcset_image_width', 'max_srcset_image_width', 10 , 2);
 function max_srcset_image_width() {
-	return 1920; // max width in pixels
+  return 1920; // max width in pixels
 }
