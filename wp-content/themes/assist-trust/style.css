@@ -426,8 +426,8 @@ tbody th {
   top: 0;
   bottom: 0;
   margin: auto;
-  height: 2rem;
-  width: 2rem;
+  height: 3rem;
+  width: 3rem;
   color: #fff;
   transition: all .2s ease-in-out;
 }
