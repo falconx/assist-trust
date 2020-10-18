@@ -28,7 +28,7 @@ $skills = get_posts(array(
                 $fields = get_fields($skill->ID);
 
                 ?>
-                <?php echo wp_get_attachment_image($fields['image']['ID'], 'medium'); ?>
+                <?php echo wp_get_attachment_image($fields['image']['ID'], 'case-study'); ?>
                 <h2><?php echo $skill->post_title; ?></h2>
                 <p><?php echo $fields['content']; ?></p>
               </div>
