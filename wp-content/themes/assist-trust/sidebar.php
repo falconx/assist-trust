@@ -1,7 +1,9 @@
 <?php $quote = get_field('quote'); ?>
 
 <?php if ($quote['image']): ?>
-  <?php echo wp_get_attachment_image($quote['image']['ID'], 'quote-thumbnail'); ?>
+  <div class="mb-2">
+    <?php echo wp_get_attachment_image($quote['image']['ID'], 'quote-thumbnail'); ?>
+  </div>
 <?php endif; ?>
 
 <blockquote>

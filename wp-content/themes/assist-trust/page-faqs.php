@@ -22,7 +22,7 @@ $faqs = get_posts(array(
 
   <div class="container-xl<?php echo ($has_sidebar) ? ' with-sidebar' : '' ?>">
     <div class="row py-5">
-      <div class="content col-md-<?php echo ($has_sidebar) ? '8' : '12'; ?>">
+      <div class="content col-md-<?php echo ($has_sidebar) ? '9' : '12'; ?>">
         <h1><?php the_title(); ?></h1>
 
         <ul class="stack-sm">
@@ -65,7 +65,7 @@ $faqs = get_posts(array(
       </div>
 
       <?php if ($has_sidebar): ?>
-        <section class="sidebar col-md-4 mt-3 mt-md-0" aria-labelledby="quote">
+        <section class="sidebar col-md-3 mt-3 mt-md-0" aria-labelledby="quote">
           <h2 id="quote" class="visually-hidden">Quote</h2>
 
           <?php get_sidebar(); ?>
