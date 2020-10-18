@@ -43,7 +43,7 @@ usort($timeline, 'orderByYear');
                 ?>
                 <h2><?php echo $fields['year']; ?></h2>
                 <div class="timeline--image">
-                  <?php echo wp_get_attachment_image($fields['image']['ID'], 'thumbnail'); ?>
+                  <?php echo wp_get_attachment_image($fields['image']['ID'], 'history-thumbnail'); ?>
                 </div>
                 <p><?php echo $fields['description']; ?></p>
               </div>

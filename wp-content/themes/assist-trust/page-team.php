@@ -19,7 +19,7 @@ $members = get_posts(array(
       <div class="content col-md-12">
         <h1><?php the_title(); ?></h1>
 
-        <ul class="row team">
+        <ul class="row team grid">
           <?php foreach($members as $member): ?>
             <li class="col col-12 col-sm-6 col-md-4 col-lg-3">
               <div class="team--member">
@@ -28,7 +28,7 @@ $members = get_posts(array(
                 $fields = get_fields($member->ID);
 
                 ?>
-                <?php echo wp_get_attachment_image($fields['image']['ID'], 'medium'); ?>
+                <?php echo wp_get_attachment_image($fields['image']['ID'], 'thumbnail'); ?>
                 <h2><?php echo $member->post_title; ?></h2>
                 <p><?php echo $fields['about']; ?></p>
               </div>

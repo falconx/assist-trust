@@ -28,7 +28,7 @@ $caseStudies = get_posts(array(
                 $fields = get_fields($entry->ID);
 
                 ?>
-                <?php echo wp_get_attachment_image($fields['image']['ID'], 'medium'); ?>
+                <?php echo wp_get_attachment_image($fields['image']['ID'], 'case-study'); ?>
                 <h2><?php echo $fields['name']; ?></h2>
                 <h3><?php echo $entry->post_title; ?></h3>
                 <p><?php echo $fields['content']; ?></p>

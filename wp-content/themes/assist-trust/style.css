@@ -805,12 +805,6 @@ tbody th {
 
 /* meet the team (page-team.php) */
 
-.team {
-  /* Todo: remove ul[class] selector so that this is not necessary */
-  margin-right: -0.75rem !important;
-  margin-left: -0.75rem !important;
-}
-
 .team--member > * + * {
   margin-top: 1rem;
 }
@@ -818,10 +812,6 @@ tbody th {
 .team--member p {
   margin-top: 0;
   max-width: 40ch;
-}
-
-.team--member img {
-  max-width: 200px;
 }
 
 /* timeline page (page-timeline.php) */
@@ -923,12 +913,6 @@ tbody th {
 
 /* galleries page (page-galleries.php) */
 
-.galleries img {
-  height: 100px;
-  width: 100%;
-  object-fit: cover;
-}
-
 .gallery {
   margin: -.25rem 0;
 }
@@ -944,10 +928,6 @@ tbody th {
 }
 
 @media (min-width: 576px) { /* small devices */
-  .galleries img {
-    height: 200px;
-  }
-
   .gallery {
     margin: -1.5rem 0;
   }
@@ -976,10 +956,10 @@ tbody th {
 
 /* wysiwyg */
 
-.content ul {
+.content ul:not([class]) {
   list-style: circle inside;
 }
 
-.content ol {
+.content ol:not([class]) {
   list-style: decimal inside;
 }

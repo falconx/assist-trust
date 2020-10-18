@@ -44,7 +44,10 @@ function wp_get_menu_array($menu) {
 }
 
 add_image_size('banner', 600, 400, true);
-add_image_size('slider', 1140, 400, true);
+add_image_size('slider', 1260, 360, true);
+add_image_size('case-study', 520, 416, true);
+add_image_size('history-thumbnail', 163, 136, true);
+add_image_size('quote-thumbnail', 360, 288, true);
 
 add_filter('max_srcset_image_width', 'max_srcset_image_width', 10 , 2);
 function max_srcset_image_width() {
