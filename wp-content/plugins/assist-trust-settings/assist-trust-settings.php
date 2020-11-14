@@ -29,7 +29,7 @@ class AssistTrustSettings {
     // Add the menu item and page
     $page_title = 'Assist Trust Settings';
     $menu_title = 'Assist Trust Settings';
-    $capability = 'manage_options';
+    $capability = 'edit_pages';
     $slug = 'assist_settings';
     $callback = array($this, 'plugin_settings_page_content');
     $icon = 'dashicons-admin-plugins';
