@@ -53,3 +53,9 @@ add_filter('max_srcset_image_width', 'max_srcset_image_width', 10 , 2);
 function max_srcset_image_width() {
   return 1920; // max width in pixels
 }
+
+add_cap('editor', 'edit_theme_options');
+function add_cap($role, $cap) {
+  $role = get_role($role);
+  $role->add_cap($cap);
+}
