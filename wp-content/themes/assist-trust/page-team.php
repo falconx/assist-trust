@@ -4,7 +4,8 @@
 $rows = (array)get_field('content');
 
 $members = get_posts(array(
-  'post_type' => 'team'
+  'post_type' => 'team',
+  'numberposts' => -1,
 ));
 
 ?>

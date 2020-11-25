@@ -4,7 +4,8 @@
 $rows = (array)get_field('content');
 
 $skills = get_posts(array(
-  'post_type' => 'work_skills'
+  'post_type' => 'work_skills',
+  'numberposts' => -1,
 ));
 
 ?>

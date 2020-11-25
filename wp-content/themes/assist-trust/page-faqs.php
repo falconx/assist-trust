@@ -10,7 +10,8 @@ $has_sidebar = $quote['text'] && $quote['author'];
 $rows = (array)get_field('content');
 
 $faqs = get_posts(array(
-  'post_type' => 'faqs'
+  'post_type' => 'faqs',
+  'numberposts' => -1,
 ));
 
 ?>

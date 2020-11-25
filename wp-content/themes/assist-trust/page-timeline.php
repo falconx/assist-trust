@@ -4,7 +4,8 @@
 $rows = (array)get_field('content');
 
 $timeline = get_posts(array(
-  'post_type' => 'timeline'
+  'post_type' => 'timeline',
+  'numberposts' => -1,
 ));
 
 function orderByYear($a, $b) {

@@ -4,7 +4,8 @@
 $rows = (array)get_field('content');
 
 $caseStudies = get_posts(array(
-  'post_type' => 'case_studies'
+  'post_type' => 'case_studies',
+  'numberposts' => -1,
 ));
 
 ?>

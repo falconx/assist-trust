@@ -10,7 +10,8 @@ $has_sidebar = $quote['text'] && $quote['author'];
 $rows = (array)get_field('content');
 
 $dates = get_posts(array(
-  'post_type' => 'diary_dates'
+  'post_type' => 'diary_dates',
+  'numberposts' => -1,
 ));
 
 $trainingDays = get_field('training_days_dates', 'option');
