@@ -20,6 +20,8 @@ $skills = get_posts(array(
       <div class="content col-md-12">
         <h1><?php the_title(); ?></h1>
 
+        <?php include get_theme_file_path('/includes/content-grid.php'); ?>
+
         <ul class="row mx-sm-n5 case-studies grid">
           <?php foreach($skills as $skill): ?>
             <li class="col col-12 col-sm-6 px-sm-5">
@@ -36,8 +38,6 @@ $skills = get_posts(array(
             </li>
           <?php endforeach; ?>
         </ul>
-
-        <?php include get_theme_file_path('/includes/content-grid.php'); ?>
       </div>
     </div>
 
