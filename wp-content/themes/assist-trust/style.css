@@ -963,3 +963,12 @@ tbody th {
 .content ol:not([class]) {
   list-style: decimal inside;
 }
+
+.content img {
+  display: inline;
+  margin-right: .5rem;
+}
+
+.content img:last-of-type {
+  margin-right: 0;
+}
