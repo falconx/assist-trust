@@ -6,6 +6,13 @@
           <?php
           
           $banner = get_sub_field('banner');
+
+          $text = $banner['link']['link_text'];
+          $type = $banner['link']['link_type'];
+
+          $destination = ($type === 'internal')
+            ? $banner['link']['destination']['url']
+            : $banner['link']['external_destination'];
           
           ?>
           <div class="row mx-sm-n6 mx-lg-n4">
@@ -16,9 +23,11 @@
                 </div>
 
                 <div class="col order-first order-sm-last mt-3">
-                  <a class="button button__primary" href="<?php echo $banner['destination']; ?>">
-                    <?php echo $banner['link_text']; ?>
-                  </a>
+                  <?php if (!empty($text) && !empty($destination)): ?>
+                    <a class="button button__primary" href="<?php echo $destination; ?>"<?php if ($type === 'external'): ?> target="_blank" rel="noreferrer noopener"<?php endif; ?>>
+                      <?php echo $text; ?>
+                    </a>
+                  <?php endif; ?>
                 </div>
               </div>
             </div>
