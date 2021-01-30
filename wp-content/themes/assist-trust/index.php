@@ -81,7 +81,7 @@ $rows = (array)get_field('content');
                     </div>
 
                     <div class="col order-first order-sm-last mt-3">
-                      <?php if ($text && $destination): ?>
+                      <?php if (!empty($text) && !empty($destination)): ?>
                         <a class="button button__primary" href="<?php echo $destination; ?>"<?php if ($type === 'external'): ?> target="_blank" rel="noreferrer noopener"<?php endif; ?>>
                           <?php echo $text; ?>
                         </a>
