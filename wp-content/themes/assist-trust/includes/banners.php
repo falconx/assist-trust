@@ -11,8 +11,8 @@
           $type = $banner['link']['link_type'];
 
           $destination = ($type === 'internal')
-            ? $banner['link']['destination']['url']
-            : $banner['link']['external_destination'];
+            ? $banner->link->destination->url
+            : $banner->link->external_destination;
           
           ?>
           <div class="row mx-sm-n6 mx-lg-n4">
@@ -33,7 +33,7 @@
             </div>
 
             <div class="col-sm-6 px-lg-4 order-first<?php if ($banner['image_position'] == 'right'): ?> order-sm-last<?php endif; ?>">
-              <?php echo wp_get_attachment_image($banner['image']['ID'], 'banner'); ?>
+              <?php echo wp_get_attachment_image($banner['image'], 'banner'); ?>
             </div>
           </div>
         </div>
