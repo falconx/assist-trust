@@ -48,7 +48,7 @@
       </ul>
 
       <div class="d-none d-sm-block">
-        <a href="<?php echo get_field('donate_url'); ?>" target="_blank" rel="noreferrer noopener" class="button button__primary button__donate">Donate</a>
+        <a href="<?php echo get_field('donate_url', 'option'); ?>" target="_blank" rel="noreferrer noopener" class="button button__primary button__donate">Donate</a>
       </div>
     </div>
   </div>
