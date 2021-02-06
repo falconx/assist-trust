@@ -1,0 +1,2 @@
+[18-Jan-2021 13:44:07 UTC] PHP Warning:  mysqli_query(): MySQL server has gone away in /home/customer/www/mattl3.sg-host.com/public_html/wp-includes/wp-db.php on line 2056
+[18-Jan-2021 13:44:07 UTC] PHP Warning:  mysqli_query(): Error reading result set's header in /home/customer/www/mattl3.sg-host.com/public_html/wp-includes/wp-db.php on line 2056
