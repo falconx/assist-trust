@@ -70,7 +70,7 @@ $rows = (array)get_field('content');
 
               $destination = ($type === 'internal')
                 ? $banner['link']['destination']['url']
-                : $banner['link']['external_destination'];
+		: $banner['link']['external_destination'];
 
               ?>
               <div class="row mx-sm-n6 mx-lg-n4">
