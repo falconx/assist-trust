@@ -7,7 +7,7 @@ Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://github.com/sponsors/joppuyo
-Stable Tag: 4.1.0
+Stable Tag: 5.0.3
 
 ACF field that allows user to crop image to a specific aspect ratio or pixel size
 
@@ -41,9 +41,17 @@ When crop button is pressed, the area is cropped from the original image. After 
 
 Crop can be done freely, there are no aspect ratio limitations.
 
+= Requirements =
+
+* WordPress 4.9 or later
+* PHP 5.6 or later
+* Advanced Custom Fields 5.8 or later (Pro or Free)
+
 = Compatibility =
 
-This ACF field type is compatible with:
+* Polylang Pro
+* Enable Media Replace
+* WP Offload Media, Media Cloud and other plugins that move media files to remote location
 
 * ACF 5.8 or later (Pro or Free)
 
@@ -62,7 +70,7 @@ Special thanks to Anders Thorborg for [ACF Image Crop](https://github.com/anders
 
 = Can I use this plugin with a front-end acf_form? =
 
-Unfortunately this is not supported right now since the plugin requires `upload_files` capability to access the media library. If user does not have this permission, a basic upload dialog will be displayed without a cropper. You can enable cropping by assigning  `upload_files`  capability to the user role but this means that users are able to access the media library like admin users. I will look into implementing front-end form cropping without needing this capability in a future release of this plugin.
+Yes, this functionality has been added in version 5.0.0. Please test it and give feedback if you encounter any issues.
 
 = Can I access metadata in the original image from a cropped image? =
 
@@ -98,12 +106,51 @@ The other plugin is not actively maintained and does not work well with latest A
 
 == Changelog ==
 
+= 5.0.3 (2020-12-03) =
+* Fix: Fixed bug where cropping didn't work in a multisite subsite
+
+= 5.0.2 (2020-11-30) =
+* Fix: Updated translation strings
+
+= 5.0.1 (2020-11-30) =
+* Fix: Fixed compatibility issue with Yoast SEO that caused a bug where media modal didn't open
+
+= 5.0.0 (2020-11-30) =
+* Breaking change: REST API is now used for cropping image instead of admin-ajax
+* Feature: Added frontend image crop. This allows you to use crop functionality with [ACF forms](https://www.advancedcustomfields.com/resources/create-a-front-end-form/) on the front-end, even if the user does not have access to the media library.
+
+I'd like to take this moment to announce that I have a [GitHub Sponsors](https://github.com/sponsors/joppuyo/) page. Maintaining this plugin is a lot of work and front-end image crop is one of those features I don't use personally but I was requested so many times had to add it to the plugin, which took multiple days of work.
+
+If you find this feature useful or if you otherwise want to support the development of this plugin, please consider [supporting me on GitHub Sponsors](https://github.com/sponsors/joppuyo/). Thank you!
+
+= 4.1.4 (2020-11-19) =
+* Bump stable tag
+
+= 4.1.3 (2020-11-19) =
+* Fix: WPML: Fixed issue with WPML where cropped images were visible in the media gallery
+* Fix: WPML: When duplicating post to translation in WPML, image fields are now changed to translated version
+* Fix: Fixed issue where PHP error messages printed on the page pushed the cropper modal outside the browser window
+
+= 4.1.2 (2020-10-16) =
+* Fix: PHP Notice when saving ACF options page with delete unused images enabled
+
+= 4.1.1 (2020-10-14) =
+* Fix: Check that original image exists before using it during cropping process
+* Fix: Improve compatibility with Polylang Pro by using translated version of the attachment when duplicating post to another language
+
 = 4.1.0 (2020-10-07) =
 * Feature: Add `aiarc_jpeg_quality` filter to change crop JPEG quality
 * Fix: Remove unnecessarily verbose debugging
 
 = 4.0.6 (2020-10-03) =
 * Fix: Issue where image is incorrectly cropped if image has EXIF rotation and exceeds big image threshold
+
+= 5.0.0-beta1 (13.09.2020) =
+* Breaking change: REST API is now used for cropping image instead of admin-ajax
+* Feature: Added frontend image crop. Please be aware of the following limitations:
+  * It’s currently not possible to limit upload file size for front-end uploads
+  * It’s currently not possible to to limit file format for front-end uploads. JPEG, PNG and GIF images are allowed
+  * It’s currently not possible to limit height and width for front-end uploads. This means that pixel crop images may be smaller than the target but they will still have the correct aspect ratio.
 
 = 4.0.5 (2020-09-06) =
 * Fix: Bump version

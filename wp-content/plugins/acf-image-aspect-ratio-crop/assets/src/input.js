@@ -5,6 +5,8 @@
  */
 
 import Cropper from 'cropperjs';
+import axios from 'axios';
+import { sprintf } from 'sprintf-js';
 
 (function($) {
   var field = null;
@@ -79,6 +81,120 @@ import Cropper from 'cropperjs';
         this.closeModal(),
       );
 
+      // Basic upload form start
+
+      $(document).on('change', '.js-aiarc-upload', event => {
+        let uploadElement = event.currentTarget;
+
+        var acfKey = $(this.$field)
+          .find('.acf-image-uploader-aspect-ratio-crop')
+          .data('key');
+
+        let files = uploadElement.files;
+        let formData = new FormData();
+
+        this.isFirstCrop = true;
+
+        if (!files.length) {
+          return;
+        }
+
+        Array.from(Array(files.length).keys()).map(index => {
+          formData.append('image', files[index], files[index].name);
+          formData.append('key', acfKey);
+        });
+
+        uploadElement.value = '';
+
+        let settings = {
+          onUploadProgress: progressEvent => {
+            let percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total,
+            );
+
+            this.$el
+              .find('.js-aiarc-upload-progress')
+              .html(
+                sprintf(
+                  window.aiarc_translations.upload_progress,
+                  percentCompleted,
+                ),
+              );
+          },
+          headers: {
+            'X-Aiarc-Nonce': window.aiarc.nonce,
+            'X-WP-Nonce': window.aiarc.wp_rest_nonce,
+          },
+        };
+
+        $(this.$el)
+          .find('.js-aiarc-upload')
+          .hide();
+
+        $(this.$el)
+          .find('.js-aiarc-upload-progress')
+          .show();
+
+        axios
+          .post(`${window.aiarc.api_root}/aiarc/v1/upload`, formData, settings)
+          .then(response => {
+            $(field)
+              .find('input')
+              .first()
+              .val(response.data.attachment_id);
+
+            $(this.$el)
+              .find('.js-aiarc-upload-progress')
+              .hide();
+
+            $(this.$el)
+              .find('.js-aiarc-upload')
+              .show();
+
+            let $field = this.$field;
+
+            // Add original id attribute to the image so we can recrop it right away without saving the post
+            $field
+              .find('.acf-image-uploader-aspect-ratio-crop')
+              .data('original-image-id', response.data.attachment_id)
+              .attr('data-original-image-id', response.data.attachment_id);
+
+            axios
+              .get(
+                `${window.aiarc.api_root}/aiarc/v1/get/${response.data.attachment_id}`,
+              )
+              .then(response => {
+                let attachment = new window.Backbone.Model(response.data);
+
+                this.render(attachment);
+                self.openModal({ attachment: attachment, field: $field });
+              });
+          })
+          .catch(error => {
+            $(this.$el)
+              .find('.js-aiarc-upload-progress')
+              .hide();
+
+            $(this.$el)
+              .find('.js-aiarc-upload')
+              .show();
+
+            let errorMessage = window.aiarc_translations.upload_failed;
+
+            if (
+              error.response &&
+              error.response.data &&
+              error.response.data.message
+            ) {
+              errorMessage = error.response.data.message;
+            }
+
+            window.alert(errorMessage);
+          });
+      });
+
+      // Basic upload form end
+
       $(document)
         .off('click', '.js-acf-image-aspect-ratio-crop-reset')
         .on('click', '.js-acf-image-aspect-ratio-crop-reset', () => {
@@ -100,18 +216,15 @@ import Cropper from 'cropperjs';
             .data('crop_type');
 
           var data = {
-            action: 'acf_image_aspect_ratio_crop_crop',
-            data: JSON.stringify({
-              id: $(this).data('id'),
-              aspectRatioHeight: $(this).data('aspect-ratio-height'),
-              aspectRatioWidth: $(this).data('aspect-ratio-width'),
-              cropType: $(this).data('crop-type'),
-              x: cropData.x,
-              y: cropData.y,
-              width: cropData.width,
-              height: cropData.height,
-              temp_post_id: aiarc.temp_post_id,
-            }),
+            id: $(this).data('id'),
+            aspectRatioHeight: $(this).data('aspect-ratio-height'),
+            aspectRatioWidth: $(this).data('aspect-ratio-width'),
+            cropType: $(this).data('crop-type'),
+            x: cropData.x,
+            y: cropData.y,
+            width: cropData.width,
+            height: cropData.height,
+            temp_post_id: aiarc.temp_post_id,
           };
 
           $('.js-acf-image-aspect-ratio-crop-crop').prop('disabled', true);
@@ -149,9 +262,17 @@ import Cropper from 'cropperjs';
           );
           self.cropper.disable();
 
-          $.post(ajaxurl, data)
-            .done(function(data) {
-              self.cropComplete(data);
+          let options = {
+            headers: {
+              'X-Aiarc-Nonce': window.aiarc.nonce,
+              'X-WP-Nonce': window.aiarc.wp_rest_nonce,
+            },
+          };
+
+          axios
+            .post(`${window.aiarc.api_root}/aiarc/v1/crop`, data, options)
+            .then(response => {
+              self.cropComplete(response.data);
               $('.js-acf-image-aspect-ratio-crop-crop').prop('disabled', false);
               $('.js-acf-image-aspect-ratio-crop-reset').prop(
                 'disabled',
@@ -159,7 +280,7 @@ import Cropper from 'cropperjs';
               );
               $('.js-acf-image-aspect-ratio-crop-modal-footer-status').empty();
             })
-            .fail(function() {
+            .catch(response => {
               self.cropper.enable();
               $('.js-acf-image-aspect-ratio-crop-crop').prop('disabled', false);
               $('.js-acf-image-aspect-ratio-crop-reset').prop(
@@ -213,11 +334,11 @@ import Cropper from 'cropperjs';
         data = attachment.attributes;
 
         // maybe get preview size
-        data.url = acf.maybe_get(
-          data,
-          'sizes.' + this.o.preview_size + '.url',
-          data.url,
-        );
+        //data.url = acf.maybe_get(
+        //  data,
+        //  'sizes.' + this.o.preview_size + '.url',
+        //  data.url,
+        //);
       }
 
       // valid
@@ -242,6 +363,7 @@ import Cropper from 'cropperjs';
 
     render: function(data) {
       // prepare
+
       data = this.prepare(data);
 
       // update image
@@ -366,13 +488,14 @@ import Cropper from 'cropperjs';
       var originalImageId = $(this.$field)
         .find('.acf-image-uploader-aspect-ratio-crop')
         .data('original-image-id');
-      var attachment = new wp.media.model.Attachment.get(originalImageId);
-      var self = this;
-      attachment.fetch({
-        success: function(response) {
-          self.openModal({ attachment: response, field: self.$field });
-        },
-      });
+
+      axios
+        .get(`${window.aiarc.api_root}/aiarc/v1/get/${originalImageId}`)
+        .then(response => {
+          let attachment = new window.Backbone.Model(response.data);
+          let $field = this.$field;
+          this.openModal({ attachment: attachment, field: $field });
+        });
     },
 
     /*
@@ -459,7 +582,7 @@ import Cropper from 'cropperjs';
      */
 
     change: function(e) {
-      acf.fields.file.get_file_info(e.$el, this.$input);
+      //acf.fields.file.get_file_info(e.$el, this.$input);
     },
 
     escapeHandler: function(event) {
@@ -584,26 +707,26 @@ import Cropper from 'cropperjs';
       // Save coordinates so they are remembered even without saving the post first
       $(field)
         .find('.acf-image-uploader-aspect-ratio-crop')
-        .data('coordinates', this.cropper.getData())
-        .attr('data-coordinates', JSON.stringify(this.cropper.getData()));
+        .data('coordinates', this.cropper.getData(true))
+        .attr('data-coordinates', JSON.stringify(this.cropper.getData(true)));
 
       // Cropping successful, change image to cropped version
       this.cropper.destroy();
 
       $(field)
         .find('input')
+        .first()
         .val(data.id);
 
-      var attachment = new wp.media.model.Attachment.get(data.id);
+      axios
+        .get(`${window.aiarc.api_root}/aiarc/v1/get/${data.id}`)
+        .then(response => {
+          let attachment = new window.Backbone.Model(response.data);
 
-      var self = this;
-
-      attachment.fetch({
-        success: function(response) {
-          self.render(response);
-        },
-      });
-      this.closeModal();
+          this.render(attachment);
+          this.isFirstCrop = false;
+          this.closeModal();
+        });
     },
 
     closeModal: function() {
