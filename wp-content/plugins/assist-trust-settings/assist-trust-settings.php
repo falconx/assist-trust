@@ -59,7 +59,7 @@ class AssistTrustSettings {
   }
 
   public function setup_options() {
-    if (function_exists('acf_add_local_field_group')):
+    if(function_exists('acf_add_local_field_group')):
       acf_add_local_field_group(array(
         'key' => 'group_5eb6ab6334f68',
         'title' => 'Assist Trust Settings',
@@ -191,6 +191,22 @@ class AssistTrustSettings {
             'type' => 'url',
             'instructions' => '',
             'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+              'width' => '',
+              'class' => '',
+              'id' => '',
+            ),
+            'default_value' => '',
+            'placeholder' => '',
+          ),
+          array(
+            'key' => 'field_601ec061212ce',
+            'label' => 'Mailing List URL',
+            'name' => 'mailing_list_url',
+            'type' => 'url',
+            'instructions' => '',
+            'required' => 1,
             'conditional_logic' => 0,
             'wrapper' => array(
               'width' => '',
@@ -337,8 +353,7 @@ class AssistTrustSettings {
         'active' => false,
         'description' => 'Only used for the purpose of exporting to the Assist Trust Settings plugin',
       ));
-      
-      endif;
+    endif;
   }
 }
 

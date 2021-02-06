@@ -17,7 +17,7 @@
       <div class="col col-12 col-sm-8 mt-3 mt-sm-0 order-first order-sm-last">
         <div class="page-footer--right">
           <div>
-            <a href="" class="button button__secondary">
+            <a href="<?php echo get_field('mailing_list_url', 'option'); ?>" class="button button__secondary" target="_blank" class="button button__primary button_small">
               <span>Click here to join our mailing list</span>
             </a>
           </div>

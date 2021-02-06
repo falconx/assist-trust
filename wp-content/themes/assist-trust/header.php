@@ -51,7 +51,9 @@
           <div class="header--contact-info">
             <div>
               Call <?php echo get_field('phone_number', 'option'); ?><br />
-              <a class="link--email" href="mailto:<?php echo get_field('email_address', 'option'); ?>"><?php echo get_field('email_address', 'option'); ?></a>
+              <a class="link--email" href="mailto:<?php echo get_field('email_address', 'option'); ?>">
+                <?php echo get_field('email_address', 'option'); ?>
+              </a>
             </div>
           </div>
         </div>
