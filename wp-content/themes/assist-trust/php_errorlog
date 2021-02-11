@@ -34,3 +34,7 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/customer/www/mattl3.sg-host.com/public_html/wp-content/themes/assist-trust/index.php on line 4
+[07-Feb-2021 23:13:48 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_field() in /home/customer/www/mattl3.sg-host.com/public_html/wp-content/themes/assist-trust/index.php:4
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/mattl3.sg-host.com/public_html/wp-content/themes/assist-trust/index.php on line 4

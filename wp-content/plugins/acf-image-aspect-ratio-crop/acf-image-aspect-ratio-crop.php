@@ -4,7 +4,7 @@
 Plugin Name: Advanced Custom Fields: Image Aspect Ratio Crop
 Plugin URI: https://github.com/joppuyo/acf-image-aspect-ratio-crop
 Description: ACF field that allows user to crop image to a specific aspect ratio or pixel size
-Version: 5.0.3
+Version: 5.1.0
 Author: Johannes Siipola
 Author URI: https://siipo.la
 License: GPLv2 or later
@@ -182,6 +182,32 @@ class npx_acf_plugin_image_aspect_ratio_crop
             wp_send_json(['id' => $attachment_id]);
             wp_die();
         });
+
+        add_action(
+            'wp_ajax_acf_image_aspect_ratio_crop_get_attachment',
+            function () {
+                // WTF WordPress
+                $post = array_map('stripslashes_deep', $_POST);
+
+                $data = json_decode($post['data'], true);
+                $attachment_id = $data['attachment_id'];
+                $attachment = get_post($attachment_id);
+                if (!$attachment) {
+                    wp_die(
+                        __(
+                            'Attachment not found',
+                            'acf-image-aspect-ratio-crop'
+                        ),
+                        [
+                            'response' => 404,
+                        ]
+                    );
+                }
+                $attachment = wp_prepare_attachment_for_js($attachment);
+                wp_send_json($attachment);
+                wp_die();
+            }
+        );
 
         // Old WPML 4.2.9 compat
         add_action(
@@ -411,11 +437,19 @@ class npx_acf_plugin_image_aspect_ratio_crop
                 );
             }
 
+            if (!empty($_POST['rest_api_compat'])) {
+                $settings['rest_api_compat'] = filter_var(
+                    $_POST['rest_api_compat'],
+                    FILTER_VALIDATE_BOOLEAN
+                );
+            }
+
             update_option('acf-image-aspect-ratio-crop-settings', $settings);
             $updated = true;
         }
         $modal_type = $settings['modal_type'];
         $delete_unused = $settings['delete_unused'];
+        $rest_api_compat = $settings['rest_api_compat'];
 
         echo '<div class="wrap">';
         echo '<h1>' .
@@ -475,14 +509,43 @@ class npx_acf_plugin_image_aspect_ratio_crop
             '</label></p>';
         echo '</td>';
         echo '</tr>';
+        echo '<tr>';
+        echo '<td colspan="2" style="padding: 0">';
+        echo __(
+            'Please note that "Delete unused cropped images" feature is a beta feature because it requires more testing. Please do not enable the option without first backing up your database and uploads in order to prevent potential data loss.',
+            'acf-image-aspect-ratio-crop'
+        );
+        echo '</td>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '<th scope="row">';
+        echo '<label for="modal_type">' .
+            __('REST API compatibility mode', 'acf-image-aspect-ratio-crop') .
+            '</label>';
+        echo '</th>';
+        echo '<td>';
+        echo '<p><input type="radio" id="rest_api_compat_true" name="rest_api_compat" value="true" ' .
+            checked($rest_api_compat, true, false) .
+            '><label for="rest_api_compat_true"> ' .
+            __('Enabled', 'acf-image-aspect-ratio-crop') .
+            '</label></p>';
+        echo '<p><input type="radio" id="rest_api_compat_false" name="rest_api_compat" value="false" ' .
+            checked($rest_api_compat, false, false) .
+            '><label for="rest_api_compat_false"> ' .
+            __('Disabled', 'acf-image-aspect-ratio-crop') .
+            '</label></p>';
+        echo '</td>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '<td colspan="2" style="padding: 0">';
+        echo __(
+            'When you enable the REST API compatibility mode, cropping in the WordPress administration interface will use admin-ajax.php instead of the REST API. Use this compatibility mode if you do not have REST API enabled. Please note that this is a temporary fix since the REST API is the way forward. The compatibility mode will be removed in a future major release of the plugin.',
+            'acf-image-aspect-ratio-crop'
+        );
+        echo '</td>';
+        echo '</tr>';
         echo '</tbody>';
         echo '</table>';
-        echo '<p>' .
-            __(
-                'Please note that "Delete unused cropped images" feature is a beta feature because it requires more testing. Please do not enable the option without first backing up your database and uploads in order to prevent potential data loss.',
-                'acf-image-aspect-ratio-crop'
-            ) .
-            '</p>';
         echo '<p class="submit">';
         echo '<input class="button-primary js-finnish-base-forms-submit-button" type="submit" name="submit-button" value="Save">';
         echo '</p>';
@@ -524,6 +587,7 @@ class npx_acf_plugin_image_aspect_ratio_crop
         $default_user_settings = [
             'modal_type' => 'cropped',
             'delete_unused' => false,
+            'rest_api_compat' => false,
         ];
 
         $this->user_settings = array_merge($default_user_settings, $settings);
@@ -574,6 +638,14 @@ class npx_acf_plugin_image_aspect_ratio_crop
     {
         if (defined('WP_DEBUG') && WP_DEBUG === true) {
             error_log(print_r($message, true));
+        }
+    }
+
+    private function log_error($description, $object = false)
+    {
+        error_log("ACF Image Aspect Ratio Crop: $description");
+        if ($object) {
+            error_log(print_r($object, true));
         }
     }
 
@@ -738,7 +810,7 @@ class npx_acf_plugin_image_aspect_ratio_crop
         register_rest_route('aiarc/v1', '/get/(?P<id>\d+)', [
             'methods' => 'GET',
             'callback' => [$this, 'rest_api_get_callback'],
-            'args' => ['id'],
+            'args' => ['id' => []],
             'permission_callback' => function () {
                 return true;
             },
@@ -816,7 +888,10 @@ class npx_acf_plugin_image_aspect_ratio_crop
 
         $allowed_mime_types = $this->extension_list_to_mime_array($mime_types);
 
-        if (!in_array($file_mime, $allowed_mime_types)) {
+        if (
+            !empty($allowed_mime_types) &&
+            !in_array($file_mime, $allowed_mime_types)
+        ) {
             return new WP_Error(
                 'invalid_mime_type',
                 __('Invalid file type.', 'acf-image-aspect-ratio-crop')
@@ -831,16 +906,14 @@ class npx_acf_plugin_image_aspect_ratio_crop
         ) {
             return new WP_Error(
                 'file_too_large',
-                __(
-                    sprintf(
-                        __(
-                            'File size too large. Maximum file size is %d megabytes.',
-                            'acf-image-aspect-ratio-crop'
-                        ),
-                        $max_size
+                sprintf(
+                    __(
+                        'File size too large. Maximum file size is %d megabytes.',
+                        'acf-image-aspect-ratio-crop'
                     ),
-                    'acf-image-aspect-ratio-crop'
-                )
+                    $max_size
+                ),
+                'acf-image-aspect-ratio-crop'
             );
         }
 
@@ -850,16 +923,14 @@ class npx_acf_plugin_image_aspect_ratio_crop
         ) {
             return new WP_Error(
                 'file_too_small',
-                __(
-                    sprintf(
-                        __(
-                            'File size too small. Minimum file size is %d megabytes.',
-                            'acf-image-aspect-ratio-crop'
-                        ),
-                        $min_size
+                sprintf(
+                    __(
+                        'File size too small. Minimum file size is %d megabytes.',
+                        'acf-image-aspect-ratio-crop'
                     ),
-                    'acf-image-aspect-ratio-crop'
-                )
+                    $min_size
+                ),
+                'acf-image-aspect-ratio-crop'
             );
         }
 
@@ -886,17 +957,15 @@ class npx_acf_plugin_image_aspect_ratio_crop
         ) {
             return new WP_Error(
                 'image_too_small',
-                __(
-                    sprintf(
-                        __(
-                            'Image too small. Minimum image dimensions are %d×%d pixels.',
-                            'acf-image-aspect-ratio-crop'
-                        ),
-                        $min_width,
-                        $min_height
+                sprintf(
+                    __(
+                        'Image too small. Minimum image dimensions are %d×%d pixels.',
+                        'acf-image-aspect-ratio-crop'
                     ),
-                    'acf-image-aspect-ratio-crop'
-                )
+                    $min_width,
+                    $min_height
+                ),
+                'acf-image-aspect-ratio-crop'
             );
         }
 
@@ -907,17 +976,15 @@ class npx_acf_plugin_image_aspect_ratio_crop
         ) {
             return new WP_Error(
                 'image_too_large',
-                __(
-                    sprintf(
-                        __(
-                            'Image too large. Maximum image dimensions are %d×%d pixels.',
-                            'acf-image-aspect-ratio-crop'
-                        ),
-                        $max_width,
-                        $max_height
+                sprintf(
+                    __(
+                        'Image too large. Maximum image dimensions are %d×%d pixels.',
+                        'acf-image-aspect-ratio-crop'
                     ),
-                    'acf-image-aspect-ratio-crop'
-                )
+                    $max_width,
+                    $max_height
+                ),
+                'acf-image-aspect-ratio-crop'
             );
         }
 
@@ -940,8 +1007,8 @@ class npx_acf_plugin_image_aspect_ratio_crop
             'post_status' => 'inherit',
         ];
 
-        $attachment_id = wp_insert_attachment($attachment, $upload['file']);
         require_once ABSPATH . 'wp-admin/includes/image.php';
+        $attachment_id = wp_insert_attachment($attachment, $upload['file']);
         $attachment_data = wp_generate_attachment_metadata(
             $attachment_id,
             $upload['file']
@@ -962,6 +1029,13 @@ class npx_acf_plugin_image_aspect_ratio_crop
             wp_get_attachment_metadata($data['id']),
             $data['id']
         );
+
+        if ($image_data === false) {
+            $error_text =
+                'Failed to get image data. Maybe the original image was deleted?';
+            $this->log_error($error_text);
+            wp_send_json($error_text, 500);
+        }
 
         // If the difference between the images is less than half a percentage, use the original image
         // prettier-ignore
@@ -1055,15 +1129,18 @@ class npx_acf_plugin_image_aspect_ratio_crop
                 $image = wp_get_image_editor($this->temp_path);
             } catch (Exception $exception) {
                 $this->cleanup();
-                wp_send_json('Failed fetch remote image', 500);
+                $error_text = 'Failed fetch remote image';
+                $this->log_error($error_text, $exception);
+                wp_send_json($error_text, 500);
                 wp_die();
             }
         }
 
         if (is_wp_error($image)) {
             $this->cleanup();
-            $this->debug($image);
-            wp_send_json('Failed to open image', 500);
+            $error_text = 'Failed to open image';
+            $this->log_error($error_text, $image);
+            wp_send_json($error_text, 500);
             wp_die();
         }
 
@@ -1120,7 +1197,9 @@ class npx_acf_plugin_image_aspect_ratio_crop
 
         if (is_wp_error($save)) {
             $this->cleanup();
-            wp_send_json('Failed to crop', 500);
+            $error_text = 'Failed to crop';
+            $this->log_error($error_text, $save);
+            wp_send_json($error_text, 500);
             wp_die();
         }
 
@@ -1133,6 +1212,9 @@ class npx_acf_plugin_image_aspect_ratio_crop
             'post_status' => 'publish',
         ];
 
+        // Polylang 2.9 Compat
+        require_once ABSPATH . 'wp-admin/includes/image.php';
+
         $attachment_id = wp_insert_attachment(
             $attachment,
             $target_relative_path
@@ -1140,7 +1222,9 @@ class npx_acf_plugin_image_aspect_ratio_crop
 
         if (is_wp_error($attachment_id)) {
             $this->cleanup();
-            wp_send_json('Failed to save attachment', 500);
+            $error_text = 'Failed to save attachment';
+            $this->log_error($error_text, $attachment_id);
+            wp_send_json($error_text, 500);
             wp_die();
         }
 

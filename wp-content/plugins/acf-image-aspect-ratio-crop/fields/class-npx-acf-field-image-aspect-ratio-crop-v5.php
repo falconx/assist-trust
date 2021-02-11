@@ -493,7 +493,7 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
 
                 <input type="file" class="aiarc-upload js-aiarc-upload" data-id="<?php echo $field[
                     'name'
-                ]; ?>" accept="<?php echo implode($mime_array, ','); ?>">
+                ]; ?>" accept="<?php echo implode(',', $mime_array); ?>">
 
                     <?php if ($image_id && !is_numeric($image_id)): ?>
                         <div class="acf-error-message"><p><?php echo acf_esc_html(
@@ -578,6 +578,8 @@ class npx_acf_field_image_aspect_ratio_crop extends acf_field
         ];
         $settings_array = [
             'modal_type' => $this->settings['user_settings']['modal_type'],
+            'rest_api_compat' =>
+                $this->settings['user_settings']['rest_api_compat'],
         ];
 
         $data_array = [
