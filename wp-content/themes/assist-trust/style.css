@@ -972,3 +972,24 @@ tbody th {
 .content img:last-of-type {
   margin-right: 0;
 }
+
+/* mailchimp form */
+
+.mc4wp-form * + * {
+  margin-top: 1rem;
+}
+
+.mc4wp-form label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mc4wp-form label input {
+  margin-left: 1rem;
+}
+
+.mc4wp-form p {
+  max-width: 40ch;
+  line-height: 1.5;
+}
