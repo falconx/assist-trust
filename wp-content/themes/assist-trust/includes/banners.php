@@ -21,13 +21,13 @@
                 <p><?php echo $banner['text']; ?></p>
               </div>
 
-              <div class="col order-first order-sm-last mt-3">
-                <?php if (!empty($text) && !empty($destination)): ?>
+              <?php if (!empty($text) && !empty($destination)): ?>
+                <div class="col order-first order-sm-last mt-3">
                   <a class="button button__primary" href="<?php echo $destination; ?>"<?php if ($type === 'external'): ?> target="_blank" rel="noreferrer noopener"<?php endif; ?>>
                     <?php echo $text; ?>
                   </a>
-                <?php endif; ?>
-              </div>
+                </div>
+              <?php endif; ?>
             </div>
           </div>
 
