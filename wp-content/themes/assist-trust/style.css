@@ -77,6 +77,22 @@ h2, h3 {
   text-transform: uppercase;
 }
 
+.iframe-responsive {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+}
+
+.iframe-responsive > iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 /* details/summary */
 
 body.supports-details-el details {

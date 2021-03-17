@@ -4,3 +4,4 @@ import './main';
 import './slider';
 import './gallery';
 import './table-overflow';
+import './responsive-video';
