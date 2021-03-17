@@ -146,12 +146,11 @@ blockquote p:after {
 
 blockquote p:before {
   content: open-quote;
-  padding-right: 5px;
+  padding-right: .25em;
 }
 
 blockquote p:after {
   content: close-quote;
-  padding-left: 2px;
 }
 
 blockquote footer {
