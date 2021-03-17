@@ -175,6 +175,7 @@ thead th {
   background-color: #d70c8c;
 }
 
+tbody tr:nth-child(even),
 thead tr + tr th,
 tbody th {
   color: #d70c8c;
