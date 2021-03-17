@@ -815,7 +815,7 @@ tbody th {
 
 /* timeline page (page-timeline.php) */
 
-.timeline > * ~ * .timeline--entry {
+.timeline > * ~ * .timeline--entry h2 {
   padding-top: 2rem;
 }
 
