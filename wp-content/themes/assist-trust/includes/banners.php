@@ -10,8 +10,8 @@
         $type = $banner['link']['link_type'];
 
         $destination = ($type === 'internal')
-          ? $banner->link->destination->url
-          : $banner->link->external_destination;
+          ? $banner['link']['destination']['url']
+          : $banner['link']['external_destination'];
         
         ?>
         <div class="row mx-sm-n6 mx-lg-n4">

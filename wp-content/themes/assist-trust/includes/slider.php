@@ -11,8 +11,8 @@ $slideCount = count($slides);
 
 ?>
 
-<section aria-labelledby="slider-heading">
-  <?php if ($slideCount): ?>
+<?php if ($slideCount): ?>
+  <section aria-labelledby="slider-heading">
     <svg hidden>
       <symbol id="arrow-left" viewBox="0 0 10 10">
         <path fill="currentColor" d="m9 4h-4v-2l-4 3 4 3v-2h4z"></path>
@@ -66,5 +66,5 @@ $slideCount = count($slides);
         </ul>
       <?php endif; ?>
     </div>
-  <?php endif; ?>
-</section>
+  </section>
+<?php endif; ?>

@@ -1,5 +1,7 @@
 <?php
 
+add_theme_support('title-tag');
+
 /**
  * Modification of "Build a tree from a flat array in PHP"
  *
@@ -59,3 +61,9 @@ function add_cap($role, $cap) {
   $role = get_role($role);
   $role->add_cap($cap);
 }
+
+function wpdocs_excerpt_more($more) {
+  return '…';
+}
+
+add_filter('excerpt_more', 'wpdocs_excerpt_more');

@@ -17,13 +17,13 @@
       <div class="col col-12 col-sm-8 mt-3 mt-sm-0 order-first order-sm-last">
         <div class="page-footer--right">
           <div>
-	  <a href="javascript:Boxzilla.show(<?php echo get_field('mailing_list_box_id', 'option'); ?>)" class="button button__secondary" class="button button__primary button_small">
+        	  <a href="javascript:Boxzilla.show(<?php echo get_field('mailing_list_box_id', 'option'); ?>)" class="button button__secondary" class="button button__primary button_small">
               <span>Click here to join our mailing list</span>
             </a>
           </div>
 
           <div class="mt-3">
-            <a href="<?php echo get_field('donate_url', 'option'); ?>" target="_blank" class="button button__primary button_small">Donate</a>
+            <a href="<?php echo get_field('donate_url', 'option'); ?>" target="_blank" rel="noreferrer noopener" class="button button__primary button_small">Donate</a>
           </div>
 
           <div class="my-3">

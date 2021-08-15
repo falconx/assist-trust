@@ -79,10 +79,8 @@ h2, h3 {
 
 .iframe-responsive {
   position: relative;
-  width: 100%;
   height: 0;
   padding-bottom: 56.25%;
-  overflow: hidden;
 }
 
 .iframe-responsive > iframe {
@@ -131,8 +129,8 @@ body.supports-details-el summary:after {
   transition: transform 0.2s ease-in-out 0s;
 }
 
-body.supports-details-el summary::-webkit-details-marker,
-body.supports-details-el summary:focus::-webkit-details-marker {
+body.supports-details-el summary::marker,
+body.supports-details-el summary:focus::marker {
   background: none;
   color: transparent;
 }
@@ -147,25 +145,29 @@ blockquote {
   quotes: "\201C""\201D""\2018""\2019";
 }
 
-blockquote p {
-  display: inline;
+blockquote {
+  margin-left: 2rem;
   font-style: italic;
 }
 
-blockquote p:before,
-blockquote p:after {
+.sidebar blockquote {
+  margin-left: 0;
+}
+
+blockquote p:first-of-type:before,
+blockquote p:last-of-type:after {
   color: #d70c8c;
   font-size: 2em;
   line-height: 0.1em;
   vertical-align: -0.4em;
 }
 
-blockquote p:before {
+blockquote p:first-of-type:before {
   content: open-quote;
   padding-right: .25em;
 }
 
-blockquote p:after {
+blockquote p:last-of-type:after {
   content: close-quote;
 }
 
@@ -173,8 +175,17 @@ blockquote footer {
   margin-top: 1em;
 }
 
+blockquote p + p {
+  margin-top: 1em;
+}
+
+blockquote cite:before {
+  content: '—';
+  margin-right: .5em;
+}
+
 @media (min-width: 768px) { /* medium devices */
-  blockquote p {
+  .sidebar blockquote {
     font-size: 1.25rem;
   }
 }
@@ -234,6 +245,7 @@ tbody th {
 
 /* button */
 
+.searchform [type="submit"],
 .button {
   display: inline-flex;
   align-items: center;
@@ -242,25 +254,31 @@ tbody th {
   min-height: 44px;
   font-size: 1rem;
   font-weight: bold;
+  border: none;
   cursor: pointer;
   transition: background-color .2s;
 }
 
+.searchform [type="submit"]:hover,
 .button:hover {
   text-decoration: none;
 }
 
 /* some duplication with *:focus due to specificity conflict with .button */
+.searchform [type="submit"]:focus,
 .button:focus {
   outline: 1px dashed currentColor;
   outline-offset: 5px;
 }
 
+.searchform [type="submit"],
 .button__primary {
   color: #fff;
   background-color: #d70c8c;
 }
 
+.searchform [type="submit"]:hover,
+.searchform [type="submit"]:focus,
 .button__primary:hover,
 .button__primary:focus {
   background-color: #f323a6;
@@ -276,6 +294,7 @@ tbody th {
   text-decoration: underline;
 }
 
+.searchform [type="submit"],
 .button_small {
   min-height: auto;
   padding: .5rem 1rem;
@@ -286,6 +305,42 @@ tbody th {
   height: 100%;
   min-height: 0;
   padding: 0 .75rem;
+}
+
+/* archives */
+
+.archive-list,
+.archive-list ul {
+  list-style: circle inside;
+}
+
+.archive-list ul {
+  margin-left: 1.5rem;
+}
+
+.archive-list a {
+  color: #d70c8c;
+}
+
+.archive-item__heading {
+  margin-bottom: .25rem;
+}
+
+.archive-item__content {
+  margin: .25rem 0;
+}
+
+.archive-item__date {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 4px 6px;
+  font-size: .75rem;
+}
+
+/* search form */
+
+.searchform [type="submit"] {
+  margin-top: .25rem;
 }
 
 /* layout */
@@ -389,6 +444,48 @@ tbody th {
   }
 }
 
+/* cookie banner */
+
+#cookie-banner {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  background-color: #004279;
+  z-index: 100;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, .2);
+
+  /* made visible via JavaScript if cookies haven't been accepted already */
+  display: none;
+}
+
+#cookie-banner h2 {
+  font-size: 1.25rem;
+}
+
+#page--preferences fieldset {
+  border: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+#page--preferences label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#page--preferences label + label {
+  margin-top: .5rem;
+}
+
+#page--preferences input {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: .75rem;
+}
+
 /* slider */
 
 .slider--wrapper {
@@ -473,16 +570,28 @@ tbody th {
 }
 
 .slider--nav > * + * {
-  margin-left: .5rem;
+  margin-left: 20px;
 }
 
-.slider--nav button { 
+.slider--nav button {
+  position: relative;
   height: 1rem;
   width: 1rem;
   border-radius: 50%;
   background-color: #fff;
   outline-color: #fff;
   transition: all .2s ease-in-out;
+}
+
+/* increase interactive surface area */
+.slider--nav button:before {
+  content: '';
+  height: 48px;
+  width: 48px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-1rem, -1rem);
 }
 
 .slider--nav li:not(.active):hover button {

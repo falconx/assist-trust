@@ -5,3 +5,4 @@ import './slider';
 import './gallery';
 import './table-overflow';
 import './responsive-video';
+import './cookie-banner';
