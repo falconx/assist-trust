@@ -49,17 +49,16 @@ function at_admin_init() {
   remove_post_type_support('page', 'editor');
 }
 
-add_action('admin_menu', 'post_remove');
-function post_remove() {
-  remove_menu_page('edit.php');
-}
-
-add_action('admin_bar_menu', 'remove_default_post_type_menu_bar', 999);
-function remove_default_post_type_menu_bar($wp_admin_bar) {
-  $wp_admin_bar->remove_node('new-post');
-}
-
 add_action('wp_dashboard_setup', 'remove_draft_widget', 999);
 function remove_draft_widget() {
   remove_meta_box('dashboard_quick_press', 'dashboard', 'side');
+}
+
+add_filter('pre_get_posts', 'prefix_limit_post_types_in_search');
+function prefix_limit_post_types_in_search($query) {
+  if ($query->is_search) {
+    $query->set('post_type', array('post'));
+  }
+
+  return $query;
 }
