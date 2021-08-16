@@ -1,6 +1,6 @@
 <?php if (have_rows('banners')): ?>
   <?php while (have_rows('banners')): the_row(); ?>
-    <div class="banner full-width py-3 py-sm-4 py-md-5">
+    <section class="banner full-width py-3 py-sm-4 py-md-5">
       <div class="container-xl">
         <?php
         
@@ -36,6 +36,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
   <?php endwhile; ?>
 <?php endif; ?>
